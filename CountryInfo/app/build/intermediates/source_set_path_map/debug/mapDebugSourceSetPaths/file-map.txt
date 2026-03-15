@@ -1,0 +1,41 @@
+com.diogo.countryinfo.app-core-runtime-2.2.0-0 C:\Users\diogo\.gradle\caches\8.9\transforms\08ff96117aef32e15853f6538d6b8412\transformed\core-runtime-2.2.0\res
+com.diogo.countryinfo.app-lifecycle-livedata-core-2.8.4-1 C:\Users\diogo\.gradle\caches\8.9\transforms\0ac70ad3ede77763169bb982d589e19e\transformed\lifecycle-livedata-core-2.8.4\res
+com.diogo.countryinfo.app-transition-1.5.0-2 C:\Users\diogo\.gradle\caches\8.9\transforms\115109d33d9c1f66947e25b098db0a1d\transformed\transition-1.5.0\res
+com.diogo.countryinfo.app-coordinatorlayout-1.1.0-3 C:\Users\diogo\.gradle\caches\8.9\transforms\15f8580c0bdb54dcdb202773c436ba33\transformed\coordinatorlayout-1.1.0\res
+com.diogo.countryinfo.app-lifecycle-viewmodel-ktx-2.8.4-4 C:\Users\diogo\.gradle\caches\8.9\transforms\1a42a30f5157180ae5e9e4c94ecb42f5\transformed\lifecycle-viewmodel-ktx-2.8.4\res
+com.diogo.countryinfo.app-drawerlayout-1.1.1-5 C:\Users\diogo\.gradle\caches\8.9\transforms\22595513795e2e2697ea10a601e732af\transformed\drawerlayout-1.1.1\res
+com.diogo.countryinfo.app-recyclerview-1.1.0-6 C:\Users\diogo\.gradle\caches\8.9\transforms\2b57556045ce4ac21fb684365f97d1fc\transformed\recyclerview-1.1.0\res
+com.diogo.countryinfo.app-startup-runtime-1.1.1-7 C:\Users\diogo\.gradle\caches\8.9\transforms\38a318140319c4a3b03a4dee02486f29\transformed\startup-runtime-1.1.1\res
+com.diogo.countryinfo.app-savedstate-ktx-1.2.1-8 C:\Users\diogo\.gradle\caches\8.9\transforms\39ebbe1e551c07bfcd6c164cb1f22fac\transformed\savedstate-ktx-1.2.1\res
+com.diogo.countryinfo.app-lifecycle-livedata-core-ktx-2.8.4-9 C:\Users\diogo\.gradle\caches\8.9\transforms\4161458808552e6fe1b956a629f64d22\transformed\lifecycle-livedata-core-ktx-2.8.4\res
+com.diogo.countryinfo.app-appcompat-1.7.0-10 C:\Users\diogo\.gradle\caches\8.9\transforms\49c4f5d1a966de01c909e91be9c4e3f8\transformed\appcompat-1.7.0\res
+com.diogo.countryinfo.app-annotation-experimental-1.4.0-11 C:\Users\diogo\.gradle\caches\8.9\transforms\5a09b54852c8eae99af6d81ad4a107a1\transformed\annotation-experimental-1.4.0\res
+com.diogo.countryinfo.app-emoji2-views-helper-1.3.0-12 C:\Users\diogo\.gradle\caches\8.9\transforms\607088b6483eede47fbb4202ef3c5151\transformed\emoji2-views-helper-1.3.0\res
+com.diogo.countryinfo.app-lifecycle-runtime-release-13 C:\Users\diogo\.gradle\caches\8.9\transforms\61d082eb412e280a0637503bb84266ca\transformed\lifecycle-runtime-release\res
+com.diogo.countryinfo.app-lifecycle-viewmodel-release-14 C:\Users\diogo\.gradle\caches\8.9\transforms\6683254a9bde36a38f7c9df13e45f47f\transformed\lifecycle-viewmodel-release\res
+com.diogo.countryinfo.app-lifecycle-livedata-2.8.4-15 C:\Users\diogo\.gradle\caches\8.9\transforms\6f80dcd30b9f81bdb40b1f73b1411078\transformed\lifecycle-livedata-2.8.4\res
+com.diogo.countryinfo.app-activity-1.9.1-16 C:\Users\diogo\.gradle\caches\8.9\transforms\7026983737ca356dfde6f02e72cead1f\transformed\activity-1.9.1\res
+com.diogo.countryinfo.app-constraintlayout-2.1.4-17 C:\Users\diogo\.gradle\caches\8.9\transforms\72278b286c7ad8bc3802c307f7b84dcb\transformed\constraintlayout-2.1.4\res
+com.diogo.countryinfo.app-lifecycle-runtime-ktx-release-18 C:\Users\diogo\.gradle\caches\8.9\transforms\72a82aceb33ccff762782fb31041719a\transformed\lifecycle-runtime-ktx-release\res
+com.diogo.countryinfo.app-cardview-1.0.0-19 C:\Users\diogo\.gradle\caches\8.9\transforms\76ea0275432bd0f6f854d9dca1927d54\transformed\cardview-1.0.0\res
+com.diogo.countryinfo.app-profileinstaller-1.3.1-20 C:\Users\diogo\.gradle\caches\8.9\transforms\7945a8cbdae38b3392cff27c3f0440d5\transformed\profileinstaller-1.3.1\res
+com.diogo.countryinfo.app-core-ktx-1.13.1-21 C:\Users\diogo\.gradle\caches\8.9\transforms\79bf454479e2615ae996c2e53da25d1d\transformed\core-ktx-1.13.1\res
+com.diogo.countryinfo.app-savedstate-1.2.1-22 C:\Users\diogo\.gradle\caches\8.9\transforms\7cbbc8859d084404ce836115df260f30\transformed\savedstate-1.2.1\res
+com.diogo.countryinfo.app-appcompat-resources-1.7.0-23 C:\Users\diogo\.gradle\caches\8.9\transforms\86dce3630522c3f882874a9ca5626f32\transformed\appcompat-resources-1.7.0\res
+com.diogo.countryinfo.app-emoji2-1.3.0-24 C:\Users\diogo\.gradle\caches\8.9\transforms\888c0ae0af93e1c5e31b1db21358a3a9\transformed\emoji2-1.3.0\res
+com.diogo.countryinfo.app-glide-4.16.0-25 C:\Users\diogo\.gradle\caches\8.9\transforms\8bbc730f0ba7512ff7a7d21b26ce3b8f\transformed\glide-4.16.0\res
+com.diogo.countryinfo.app-core-1.13.1-26 C:\Users\diogo\.gradle\caches\8.9\transforms\9155d5eaa60b313c76699f88d3330471\transformed\core-1.13.1\res
+com.diogo.countryinfo.app-material-1.12.0-27 C:\Users\diogo\.gradle\caches\8.9\transforms\9520db16aed0ad6b455c0a4b9967ea85\transformed\material-1.12.0\res
+com.diogo.countryinfo.app-activity-ktx-1.9.1-28 C:\Users\diogo\.gradle\caches\8.9\transforms\b2af3a59bcd4692f9b16c017c3e3f89c\transformed\activity-ktx-1.9.1\res
+com.diogo.countryinfo.app-lifecycle-viewmodel-savedstate-2.8.4-29 C:\Users\diogo\.gradle\caches\8.9\transforms\bef321e244a2d339c3e2b0267e864e40\transformed\lifecycle-viewmodel-savedstate-2.8.4\res
+com.diogo.countryinfo.app-lifecycle-livedata-ktx-2.8.4-30 C:\Users\diogo\.gradle\caches\8.9\transforms\cb5f0b291f77ab6c6963a28a3bdb9097\transformed\lifecycle-livedata-ktx-2.8.4\res
+com.diogo.countryinfo.app-fragment-1.5.4-31 C:\Users\diogo\.gradle\caches\8.9\transforms\f16afae475d64b3334d26dd9195538ad\transformed\fragment-1.5.4\res
+com.diogo.countryinfo.app-lifecycle-process-2.8.4-32 C:\Users\diogo\.gradle\caches\8.9\transforms\f83eec970a9693e68be2a1dbbeac3d24\transformed\lifecycle-process-2.8.4\res
+com.diogo.countryinfo.app-viewpager2-1.0.0-33 C:\Users\diogo\.gradle\caches\8.9\transforms\f9d8340a6d28ddb089242ae0e5d199db\transformed\viewpager2-1.0.0\res
+com.diogo.countryinfo.app-pngs-34 C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CountryInfo\app\build\generated\res\pngs\debug
+com.diogo.countryinfo.app-resValues-35 C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CountryInfo\app\build\generated\res\resValues\debug
+com.diogo.countryinfo.app-packageDebugResources-36 C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CountryInfo\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.diogo.countryinfo.app-packageDebugResources-37 C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CountryInfo\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.diogo.countryinfo.app-debug-38 C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CountryInfo\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.diogo.countryinfo.app-debug-39 C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CountryInfo\app\src\debug\res
+com.diogo.countryinfo.app-main-40 C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CountryInfo\app\src\main\res
