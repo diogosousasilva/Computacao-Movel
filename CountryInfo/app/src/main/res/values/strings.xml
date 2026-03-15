@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Country Info</string>
+    <string name="search_hint">Enter country name</string>
+    <string name="search">Search</string>
+    <string name="capital">Capital</string>
+    <string name="population">Population</string>
+    <string name="region">Region</string>
+    <string name="country_flag">Country flag</string>
+    <string name="error_not_found">Country not found. Please check the name and try again.</string>
+    <string name="error_network">Network error. Please check your connection and try again.</string>
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="welcome_title">Search for a Country</string>
+    <string name="welcome_subtitle">Type a country name above to see its flag, capital, population, and region.</string>
+</resources>
