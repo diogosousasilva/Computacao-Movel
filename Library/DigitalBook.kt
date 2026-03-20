@@ -6,7 +6,8 @@ class DigitalBook(
     val format: String
 ) : Book(title, author, publicationYear) {
 
-    override fun getStorageInfo(): String {
+    override fun getStorageInfo(): String
+    {
         return "Digital: $fileSize MB, Formato: $format"
     }
 }

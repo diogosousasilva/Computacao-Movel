@@ -8,12 +8,29 @@ class PhysicalBook(
 ) : Book(title, author, publicationYear) {
 
     var availableCopies: Int = initialCopies
-        set(value) {
-            field = if (value < 0) 0 else value
+        set(value)
+        {
+            if (value < 0)
+            {
+                field = 0
+            }
+            else
+            {
+                field = value
+            }
         }
 
-    override fun getStorageInfo(): String {
-        val capa = if (hasHardCover) "Capa Dura" else "Capa Mole"
+    override fun getStorageInfo(): String
+    {
+        val capa
+        if (capa.hasHardCover)
+        {
+            capa = "Capa Dura"
+        }
+        else
+        {
+            capa = "Capa Mole"
+        }
         return "Físico: ${weight}kg, $capa"
     }
 }

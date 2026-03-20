@@ -1,4 +1,5 @@
-fun main() {
+fun main()
+{
     val myLibrary = Library("Biblioteca do Diogo")
 
     val b1 = PhysicalBook("1984", "George Orwell", 1949, 2, 0.5, false)

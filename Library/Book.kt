@@ -3,8 +3,10 @@ abstract class Book(
     val author: String,
     val publicationYear: Int
 ) {
-    fun getPublicationCategory(): String {
-        return when {
+    fun getPublicationCategory(): String
+    {
+        return when
+        {
             publicationYear < 1980 -> "Clássico"
             publicationYear in 1980..2010 -> "Moderno"
             else -> "Contemporâneo"
@@ -13,7 +15,8 @@ abstract class Book(
 
     abstract fun getStorageInfo(): String
 
-    override fun toString(): String {
+    override fun toString(): String
+    {
         return "Título: $title, Autor: $author, Época: ${getPublicationCategory()}"
     }
 }
