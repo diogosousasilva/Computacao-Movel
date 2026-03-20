@@ -12,5 +12,5 @@ fun main()
     myLibrary.borrowBook("1984")
     myLibrary.searchByAuthor("George Orwell")
 
-    println("\nTotal de livros no sistema: ${Library.getTotalBooksCreated()}")
+    println("\nTotal de livros nesta biblioteca: ${myLibrary.totalBooksInThisLibrary}")
 }

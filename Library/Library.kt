@@ -2,16 +2,13 @@ class Library(val name: String)
 {
     private val books = mutableListOf<Book>()
 
-    companion object
-    {
-        private var totalBooksCreated = 0
-        fun getTotalBooksCreated() = totalBooksCreated
-    }
+    var totalBooksInThisLibrary = 0
+        private set // Apenas a classe Library pode alterar, mas todos podem ler
 
     fun addBook(book: Book)
     {
         books.add(book)
-        totalBooksCreated++
+        totalBooksInThisLibrary++
     }
 
     fun showBooks()
@@ -23,11 +20,13 @@ class Library(val name: String)
     fun borrowBook(title: String)
     {
         val book = books.find { it is PhysicalBook && it.title.equals(title, true) } as? PhysicalBook
+
         if (book != null && book.availableCopies > 0)
         {
             book.availableCopies--
             println("Empréstimo de '$title' concluído.")
-        } else
+        }
+        else
         {
             println("Indisponível: '$title'.")
         }

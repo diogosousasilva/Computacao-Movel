@@ -22,15 +22,7 @@ class PhysicalBook(
 
     override fun getStorageInfo(): String
     {
-        val capa
-        if (capa.hasHardCover)
-        {
-            capa = "Capa Dura"
-        }
-        else
-        {
-            capa = "Capa Mole"
-        }
-        return "Físico: ${weight}kg, $capa"
+        val tipoCapa = if (hasHardCover) "Capa Dura" else "Capa Mole"
+        return "Físico: ${weight}kg, $tipoCapa"
     }
 }
