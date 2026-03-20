@@ -26,7 +26,7 @@ The repository is organised into three progressive exercises that follow the tut
 - `DigitalBook` subclass with file size and format.
 - `Library` class that supports adding books, listing the catalogue, borrowing physical books, and searching by author.
 - `LibraryMember` data class representing a member with borrowed books.
-- `companion object` to track the total number of books created across all libraries.
+- Instance-level `totalBooksInThisLibrary` property (with a `private set`) to track how many books have been added to each library.
 
 ### CountryInfo App (`CountryInfo/`)
 - Search for any country by name.
@@ -143,9 +143,9 @@ The library system demonstrates core OOP concepts in Kotlin:
 - **`Book`** is an `abstract class` with shared properties (`title`, `author`, `publicationYear`) and a method `getPublicationCategory()` that classifies books as *Clássico*, *Moderno*, or *Contemporâneo* based on their year using a `when` expression. It declares an abstract method `getStorageInfo()`.
 - **`PhysicalBook`** extends `Book` and adds `weight`, `hasHardCover`, and `availableCopies`. The `availableCopies` property uses a **custom setter** that prevents negative values.
 - **`DigitalBook`** extends `Book` and adds `fileSize` and `format`.
-- **`Library`** manages a collection of books and provides operations to add books, display the catalogue, borrow physical books (decrementing available copies), and search by author. A **companion object** tracks the total number of books created.
+- **`Library`** manages a collection of books and provides operations to add books, display the catalogue, borrow physical books (decrementing available copies), and search by author. An instance-level property `totalBooksInThisLibrary` with a **private setter** tracks how many books have been added to the library.
 - **`LibraryMember`** is a **data class** representing a library member.
-- **`main.kt`** creates a library, adds books, and demonstrates borrowing and searching.
+- **`main.kt`** creates a library, adds books, demonstrates borrowing and searching, and prints the total number of books in the library.
 
 ### Exercise 3 — CountryInfo Android App
 
