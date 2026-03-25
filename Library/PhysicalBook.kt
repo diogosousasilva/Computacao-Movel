@@ -7,13 +7,21 @@ class PhysicalBook(
     val hasHardCover: Boolean
 ) : Book(title, author, publicationYear) {
 
-    private var _availableCopies: Int = initialCopies
+    var availableCopies: Int = initialCopies
+        set(value)
+        {
+            if (value < 0)
+            {
+                field = 0
+            }
+            else
+            {
+                field = value
+            }
+        }
 
-    var availableCopies: Int
-        get() = _availableCopies
-        set(value) {_availableCopies = if (value < 0) 0 else value}
-
-    override fun getStorageInfo(): String {
+    override fun getStorageInfo(): String
+    {
         val tipoCapa = if (hasHardCover) "Capa Dura" else "Capa Mole"
         return "Físico: ${weight}kg, $tipoCapa"
     }
