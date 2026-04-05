@@ -16,7 +16,7 @@ The repository is organised into two tutorial folders that follow the assignment
 **Tutorial 2** covers advanced Kotlin, the weather Android application, and AI Assisted Project Planning:
 4. **Kotlin Exercises** — advanced Kotlin: sealed classes, generics, higher-order functions/lambdas, and operator overloading — each implemented in a separate file.
 5. **CoolWeatherApp** — an Android weather application using the Open-Meteo API, with MVVM architecture, GPS location, Day/Night theming, and XML-driven WMO weather codes.
-6. **AI Assisted Development (MIP-2)** — AI-guided planning and documentation for a new Android application (Image Explorer), resulting in a complete `docs/` spec folder.
+6. **AI Assisted Development (MIP-2)** — AI-guided planning and documentation for a new Android application (Image Explorer), resulting in a complete `Tutorial 2/docs/` spec folder.
 
 ## Features
 
@@ -61,7 +61,7 @@ The repository is organised into two tutorial folders that follow the assignment
 - **GPS Integration:** On startup, requests location permissions and uses `FusedLocationProviderClient` to display the device's real coordinates.
 - **XML WMO Resources:** Weather code mappings (codes, descriptions, icon names) stored in `strings.xml` as `<integer-array>` and `<string-array>` resources — no hardcoded enums.
 
-### AI Assisted Development (MIP-2) (`docs/`)
+### AI Assisted Development (MIP-2) (`Tutorial 2/docs/`)
 - Comprehensive Markdown documentation generated alongside an AI agent acting as a Senior Android Developer.
 - Extensively covers the design and architecture of an "Image Explorer" app sourcing data from the public Dog CEO API.
 - Contains implementation plans, MVVM architecture rules, database and response models, UI planning, and prompt logs.
@@ -90,18 +90,6 @@ The repository is organised into two tutorial folders that follow the assignment
 
 ```
 Computacao-Movel/
-├── docs/                                  # Section 3 (MIP-2) — AI Assisted Planning
-│   ├── 01_overview.md                     # Idea and problem statement
-│   ├── 02_features.md                     # Core & non-functional requirements
-│   ├── 03_ui_design.md                    # Material 3 & UI plans
-│   ├── 04_architecture.md                 # MVVM & Flow structure
-│   ├── 05_data_models.md                  # Room Entity & Retrofit Models
-│   ├── 06_database.md                     # DAO definition
-│   ├── 07_api_usage.md                    # Endpoints for Dog CEO API
-│   ├── 08_implementation_plan.md          # 5-Phase rollout plan
-│   ├── agents.md                          # Guidance used to prime the AI Assistant
-│   └── prompts_log.md                     # Raw prompts used for generation
-│
 ├── Enunciados/
 │   ├── ENIDH_CM_Tutorial1_2026.pdf
 │   └── ENIDH_CM_Tutorial2_2026.pdf
@@ -152,33 +140,45 @@ Computacao-Movel/
 │   │   ├── VectorLibrary.kt               # 1.4 — 2D Vector with operator overloading
 │   │   └── Main.kt                        # Entry point / demo runner
 │   │
-│   └── CoolWeatherApp/                    # Section 2 — Android Weather App
-│       ├── app/
-│       │   ├── src/main/
-│       │   │   ├── AndroidManifest.xml
-│       │   │   ├── java/com/diogo/coolweatherapp/
-│       │   │   │   ├── data/
-│       │   │   │   │   ├── model/WeatherData.kt        # WeatherData, CurrentWeather, Hourly
-│       │   │   │   │   └── repository/WeatherRepository.kt  # Gson + URL.readText()
-│       │   │   │   └── ui/
-│       │   │   │       ├── MainActivity.kt             # Observer pattern, GPS, UI updates
-│       │   │   │       └── WeatherViewModel.kt         # MVVM ViewModel + LiveData<WeatherState>
-│       │   │   └── res/
-│       │   │       ├── layout/activity_main.xml        # Portrait layout
-│       │   │       ├── layout-land/activity_main.xml   # Landscape layout
-│       │   │       ├── drawable/ic_weather_*.xml       # Weather condition icons
-│       │   │       ├── mipmap-anydpi-v26/              # Adaptive launcher icon
-│       │   │       ├── values/                     
-│       │   │       │   ├── strings.xml                 # Base English labels & mappings
-│       │   │       │   ├── colors.xml                  # Day/Night color palette
-│       │   │       │   └── themes.xml                  # Theme.Day + Theme.Night
-│       │   │       └── values-pt/                      # Portuguese Localization
-│       │   │           └── strings.xml                 # Portuguese translations
-│       │   ├── build.gradle.kts
-│       │   └── proguard-rules.pro
-│       ├── gradle/libs.versions.toml
-│       ├── build.gradle.kts
-│       └── settings.gradle.kts
+│   ├── CoolWeatherApp/                    # Section 2 — Android Weather App
+│   │   ├── app/
+│   │   │   ├── src/main/
+│   │   │   │   ├── AndroidManifest.xml
+│   │   │   │   ├── java/com/diogo/coolweatherapp/
+│   │   │   │   │   ├── data/
+│   │   │   │   │   │   ├── model/WeatherData.kt        # WeatherData, CurrentWeather, Hourly
+│   │   │   │   │   │   └── repository/WeatherRepository.kt  # Gson + URL.readText()
+│   │   │   │   │   └── ui/
+│   │   │   │   │       ├── MainActivity.kt             # Observer pattern, GPS, UI updates
+│   │   │   │   │       └── WeatherViewModel.kt         # MVVM ViewModel + LiveData<WeatherState>
+│   │   │   │   └── res/
+│   │   │   │       ├── layout/activity_main.xml        # Portrait layout
+│   │   │   │       ├── layout-land/activity_main.xml   # Landscape layout
+│   │   │   │       ├── drawable/ic_weather_*.xml       # Weather condition icons
+│   │   │   │       ├── mipmap-anydpi-v26/              # Adaptive launcher icon
+│   │   │   │       ├── values/                     
+│   │   │   │       │   ├── strings.xml                 # Base English labels & mappings
+│   │   │   │       │   ├── colors.xml                  # Day/Night color palette
+│   │   │   │       │   └── themes.xml                  # Theme.Day + Theme.Night
+│   │   │   │       └── values-pt/                      # Portuguese Localization
+│   │   │   │           └── strings.xml                 # Portuguese translations
+│   │   │   ├── build.gradle.kts
+│   │   │   └── proguard-rules.pro
+│   │   ├── gradle/libs.versions.toml
+│   │   ├── build.gradle.kts
+│   │   └── settings.gradle.kts
+│   │
+│   └── docs/                              # Section 3 (MIP-2) — AI Assisted Planning
+│       ├── 01_overview.md                 # Idea and problem statement
+│       ├── 02_features.md                 # Core & non-functional requirements
+│       ├── 03_ui_design.md                # Material 3 & UI plans
+│       ├── 04_architecture.md             # MVVM & Flow structure
+│       ├── 05_data_models.md              # Room Entity & Retrofit Models
+│       ├── 06_database.md                 # DAO definition
+│       ├── 07_api_usage.md                # Endpoints for Dog CEO API
+│       ├── 08_implementation_plan.md      # 5-Phase rollout plan
+│       ├── agents.md                      # Guidance used to prime the AI Assistant
+│       └── prompts_log.md                 # Raw prompts used for generation
 │
 └── README.md
 ```
