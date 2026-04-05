@@ -1,0 +1,9 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+    <!-- Solid cloud -->
+    <path android:fillColor="#90A4AE"
+        android:pathData="M52,34 A14,14 0 0,0 38,24 A20,20 0 0,0 12,44 L52,44 A14,14 0 0,0 52,34 Z"/>
+</vector>

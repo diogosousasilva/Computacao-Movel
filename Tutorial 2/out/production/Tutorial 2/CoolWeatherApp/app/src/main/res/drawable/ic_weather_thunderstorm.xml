@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+    <!-- Very dark cloud -->
+    <path android:fillColor="#37474F"
+        android:pathData="M52,22 A14,14 0 0,0 38,14 A20,20 0 0,0 10,32 L52,32 A14,14 0 0,0 52,22 Z"/>
+    <!-- Lightning bolt -->
+    <path android:fillColor="#FFEE58"
+        android:pathData="M34,32 L28,44 L34,44 L28,56 L40,40 L34,40 Z"/>
+    <!-- Rain drops -->
+    <path android:fillColor="#1565C0" android:strokeColor="#1565C0" android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M14,38 L11,48 M20,38 L17,48 M46,38 L43,48 M52,38 L49,48"/>
+</vector>

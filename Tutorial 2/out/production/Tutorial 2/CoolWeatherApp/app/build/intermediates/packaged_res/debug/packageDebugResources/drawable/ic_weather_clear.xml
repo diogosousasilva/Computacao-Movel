@@ -1,0 +1,12 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+    <!-- Sun -->
+    <path android:fillColor="#FDD835"
+        android:pathData="M32,20 A12,12 0 1,1 32,44 A12,12 0 1,1 32,20 Z"/>
+    <!-- Rays -->
+    <path android:fillColor="#FDD835" android:strokeColor="#FDD835" android:strokeWidth="2"
+        android:pathData="M32,8 L32,14 M32,50 L32,56 M8,32 L14,32 M50,32 L56,32 M16,16 L20,20 M44,44 L48,48 M48,16 L44,20 M20,44 L16,48"/>
+</vector>

@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.diogo.coolweatherapp-mergeDebugResources-38:/values-v16/values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\diogo\\.gradle\\caches\\8.9\\transforms\\d5a6221c50f17e227457dc5418818e2f\\transformed\\appcompat-1.7.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    }
+                }
+            ]
+        }
+    ]
+}

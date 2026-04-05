@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/windowBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Weather Icon -->
+        <ImageView
+            android:id="@+id/ivWeatherIcon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="@string/weather_icon_desc"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Weather Description -->
+        <TextView
+            android:id="@+id/tvWeatherDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_weather_desc"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/ivWeatherIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Temperature -->
+        <TextView
+            android:id="@+id/tvTemperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_temperature"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvWeatherDesc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Wind Speed -->
+        <TextView
+            android:id="@+id/tvWindspeed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_windspeed"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvTemperature"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Pressure -->
+        <TextView
+            android:id="@+id/tvPressure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_pressure"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/tvWindspeed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Time -->
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_time"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/tvPressure"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Coordinates EditText -->
+        <EditText
+            android:id="@+id/etCoordinates"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/coordinates_hint"
+            android:inputType="textNoSuggestions"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tvTime"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnUpdate"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Update Button -->
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/update_button"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tvTime"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/btnUpdate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Error TextView -->
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textColor="#F44336"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/progressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

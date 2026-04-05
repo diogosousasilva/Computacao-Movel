@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="wmo_codes">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>45</item>
+        <item>48</item>
+        <item>51</item>
+        <item>53</item>
+        <item>55</item>
+        <item>61</item>
+        <item>63</item>
+        <item>65</item>
+        <item>71</item>
+        <item>73</item>
+        <item>75</item>
+        <item>80</item>
+        <item>81</item>
+        <item>82</item>
+        <item>95</item>
+        <item>96</item>
+        <item>99</item>
+    </integer-array>
+    <string-array name="wmo_descriptions">
+        <item>Clear sky</item>
+        <item>Mainly clear</item>
+        <item>Partly cloudy</item>
+        <item>Overcast</item>
+        <item>Foggy</item>
+        <item>Icy fog</item>
+        <item>Light drizzle</item>
+        <item>Moderate drizzle</item>
+        <item>Dense drizzle</item>
+        <item>Slight rain</item>
+        <item>Moderate rain</item>
+        <item>Heavy rain</item>
+        <item>Slight snow</item>
+        <item>Moderate snow</item>
+        <item>Heavy snow</item>
+        <item>Slight showers</item>
+        <item>Moderate showers</item>
+        <item>Violent showers</item>
+        <item>Thunderstorm</item>
+        <item>Thunderstorm with slight hail</item>
+        <item>Thunderstorm with heavy hail</item>
+    </string-array>
+    <string-array name="wmo_icon_names">
+        <item>ic_weather_clear</item>
+        <item>ic_weather_mainly_clear</item>
+        <item>ic_weather_partly_cloudy</item>
+        <item>ic_weather_overcast</item>
+        <item>ic_weather_fog</item>
+        <item>ic_weather_fog</item>
+        <item>ic_weather_drizzle</item>
+        <item>ic_weather_drizzle</item>
+        <item>ic_weather_drizzle</item>
+        <item>ic_weather_rain</item>
+        <item>ic_weather_rain</item>
+        <item>ic_weather_heavy_rain</item>
+        <item>ic_weather_snow</item>
+        <item>ic_weather_snow</item>
+        <item>ic_weather_snow</item>
+        <item>ic_weather_showers</item>
+        <item>ic_weather_showers</item>
+        <item>ic_weather_showers</item>
+        <item>ic_weather_thunderstorm</item>
+        <item>ic_weather_thunderstorm</item>
+        <item>ic_weather_thunderstorm</item>
+    </string-array>
+    <color name="black">#000000</color>
+    <color name="day_background">#E3F2FD</color>
+    <color name="day_on_surface">#212121</color>
+    <color name="day_primary">#1976D2</color>
+    <color name="day_primary_dark">#0D47A1</color>
+    <color name="day_surface">#FFFFFF</color>
+    <color name="error">#F44336</color>
+    <color name="night_background">#0D1117</color>
+    <color name="night_on_surface">#E6EDF3</color>
+    <color name="night_primary">#90CAF9</color>
+    <color name="night_primary_dark">#42A5F5</color>
+    <color name="night_surface">#161B22</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">Cool Weather App</string>
+    <string name="coordinates_hint">lat,lon (e.g. 38.76,-9.12)</string>
+    <string name="placeholder_pressure">Pressure: -- hPa</string>
+    <string name="placeholder_temperature">--°C</string>
+    <string name="placeholder_time">--</string>
+    <string name="placeholder_weather_desc">Loading…</string>
+    <string name="placeholder_windspeed">Wind: -- km/h</string>
+    <string name="pressure_format">🌡 Pressure: %.1f hPa</string>
+    <string name="temperature_format">%.1f°C</string>
+    <string name="time_format">🕐 %s</string>
+    <string name="update_button">Update</string>
+    <string name="weather_icon_desc">Weather condition icon</string>
+    <string name="windspeed_format">💨 Wind: %.1f km/h</string>
+    <style name="Theme.Day" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/day_primary</item>
+        <item name="colorPrimaryDark">@color/day_primary_dark</item>
+        <item name="colorAccent">@color/day_primary</item>
+        <item name="android:windowBackground">@color/day_background</item>
+        <item name="android:textColorPrimary">@color/day_on_surface</item>
+        <item name="android:textColorSecondary">@color/day_on_surface</item>
+        <item name="android:statusBarColor">@color/day_primary_dark</item>
+        <item name="android:navigationBarColor">@color/day_primary_dark</item>
+    </style>
+    <style name="Theme.Night" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/night_primary</item>
+        <item name="colorPrimaryDark">@color/night_primary_dark</item>
+        <item name="colorAccent">@color/night_primary</item>
+        <item name="android:windowBackground">@color/night_background</item>
+        <item name="android:textColorPrimary">@color/night_on_surface</item>
+        <item name="android:textColorSecondary">@color/night_on_surface</item>
+        <item name="android:statusBarColor">@color/night_background</item>
+        <item name="android:navigationBarColor">@color/night_background</item>
+    </style>
+</resources>

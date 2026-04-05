@@ -144,7 +144,7 @@ Computacao-Movel/
 1. Install the [Kotlin compiler](https://kotlinlang.org/docs/command-line.html) or use an IDE like IntelliJ IDEA.
 2. To run an individual file:
    ```bash
-   kotlinc KotlinExercises.kt -include-runtime -d exercises.jar && java -jar exercises.jar
+   kotlinc Main.kt -include-runtime -d exercises.jar && java -jar exercises.jar
    ```
 3. To run the Library system:
    ```bash

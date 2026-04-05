@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.diogo.coolweatherapp-mergeDebugResources-38:/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\diogo\\.gradle\\caches\\8.9\\transforms\\d5a6221c50f17e227457dc5418818e2f\\transformed\\appcompat-1.7.0\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        }
+    ]
+}

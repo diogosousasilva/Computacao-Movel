@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Theme.Day — Listing 1 from tutorial PDF
+        Applied programmatically when hour is 6–19 (daytime)
+    -->
+    <style name="Theme.Day" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/day_primary</item>
+        <item name="colorPrimaryDark">@color/day_primary_dark</item>
+        <item name="colorAccent">@color/day_primary</item>
+        <item name="android:windowBackground">@color/day_background</item>
+        <item name="android:textColorPrimary">@color/day_on_surface</item>
+        <item name="android:textColorSecondary">@color/day_on_surface</item>
+        <item name="android:statusBarColor">@color/day_primary_dark</item>
+        <item name="android:navigationBarColor">@color/day_primary_dark</item>
+    </style>
+
+    <!--
+        Theme.Night — Listing 2 from tutorial PDF
+        Applied programmatically when hour is before 6 or after 19 (nighttime)
+    -->
+    <style name="Theme.Night" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/night_primary</item>
+        <item name="colorPrimaryDark">@color/night_primary_dark</item>
+        <item name="colorAccent">@color/night_primary</item>
+        <item name="android:windowBackground">@color/night_background</item>
+        <item name="android:textColorPrimary">@color/night_on_surface</item>
+        <item name="android:textColorSecondary">@color/night_on_surface</item>
+        <item name="android:statusBarColor">@color/night_background</item>
+        <item name="android:navigationBarColor">@color/night_background</item>
+    </style>
+</resources>

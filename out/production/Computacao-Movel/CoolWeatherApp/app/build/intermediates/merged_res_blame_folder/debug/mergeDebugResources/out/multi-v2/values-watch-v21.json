@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.diogo.coolweatherapp-mergeDebugResources-38:/values-watch-v21/values-watch-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\diogo\\.gradle\\caches\\8.9\\transforms\\d5a6221c50f17e227457dc5418818e2f\\transformed\\appcompat-1.7.0\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,271,499",
+                        "endLines": "5,9,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "266,494,724"
+                    }
+                }
+            ]
+        }
+    ]
+}
