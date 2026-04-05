@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_snow.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_snow.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_showers.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_showers.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/layout_activity_main.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_heavy_rain.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_heavy_rain.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_unknown.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_unknown.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_rain.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_rain.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_mainly_clear.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_mainly_clear.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_overcast.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_overcast.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_drizzle.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_drizzle.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_clear.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_clear.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_partly_cloudy.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_partly_cloudy.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_fog.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_fog.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/layout-land_activity_main.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/layout-land/activity_main.xml"
+    },
+    {
+        "merged": "com.diogo.coolweatherapp-debug-40:/drawable_ic_weather_thunderstorm.xml.flat",
+        "source": "com.diogo.coolweatherapp-main-42:/drawable/ic_weather_thunderstorm.xml"
+    }
+]
