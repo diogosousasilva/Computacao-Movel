@@ -3,7 +3,7 @@ class Library(val name: String)
     private val books = mutableListOf<Book>()
 
     var totalBooksInThisLibrary = 0
-        private set // Apenas a classe Library pode alterar, mas todos podem ler
+        private set
 
     fun addBook(book: Book)
     {
