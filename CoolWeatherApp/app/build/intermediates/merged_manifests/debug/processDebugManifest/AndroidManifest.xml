@@ -30,7 +30,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.Day" >
         <activity
-            android:name="com.diogo.coolweatherapp.MainActivity"
+            android:name="com.diogo.coolweatherapp.ui.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

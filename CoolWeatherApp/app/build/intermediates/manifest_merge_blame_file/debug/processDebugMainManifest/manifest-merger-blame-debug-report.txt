@@ -30,7 +30,7 @@
 19-->[androidx.core:core:1.15.0] C:\Users\diogo\.gradle\caches\8.9\transforms\2a6bf304bc90ba8c29fd08c4e8cfab2f\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
 20
 21    <application
-21-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:8:5-23:19
+21-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:8:5-24:19
 22        android:allowBackup="true"
 22-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:9:9-35
 23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -49,20 +49,20 @@
 31        android:theme="@style/Theme.Day" >
 31-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:14:9-41
 32        <activity
-32-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:15:9-22:20
-33            android:name="com.diogo.coolweatherapp.MainActivity"
-33-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:16:13-41
+32-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:16:9-23:20
+33            android:name="com.diogo.coolweatherapp.ui.MainActivity"
+33-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:17:13-44
 34            android:exported="true" >
-34-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:17:13-36
+34-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:18:13-36
 35            <intent-filter>
-35-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:18:13-21:29
+35-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:19:13-22:29
 36                <action android:name="android.intent.action.MAIN" />
-36-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:19:17-69
-36-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:19:25-66
+36-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:20:17-69
+36-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:20:25-66
 37
 38                <category android:name="android.intent.category.LAUNCHER" />
-38-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:20:17-77
-38-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:20:27-74
+38-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:21:17-77
+38-->C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:21:27-74
 39            </intent-filter>
 40        </activity>
 41        <activity

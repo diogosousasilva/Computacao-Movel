@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:2:1-25:12
+ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:2:1-26:12
 MERGED from [androidx.databinding:viewbinding:8.7.3] C:\Users\diogo\.gradle\caches\8.9\transforms\a94511321acbd8a3bc6eaf8d3eeaa68f\transformed\jetified-viewbinding-8.7.3\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\diogo\.gradle\caches\8.9\transforms\c402feccec98d25944392b5e9fe4665a\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\diogo\.gradle\caches\8.9\transforms\d49121c235034cb22e3007b4632baf9e\transformed\constraintlayout-2.2.0\AndroidManifest.xml:2:1-9:12
@@ -77,8 +77,8 @@ ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\
 	android:name
 		ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:6:22-78
 application
-ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:8:5-23:19
-INJECTED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:8:5-23:19
+ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:8:5-24:19
+INJECTED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:8:5-24:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\diogo\.gradle\caches\8.9\transforms\c402feccec98d25944392b5e9fe4665a\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\diogo\.gradle\caches\8.9\transforms\c402feccec98d25944392b5e9fe4665a\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\diogo\.gradle\caches\8.9\transforms\d49121c235034cb22e3007b4632baf9e\transformed\constraintlayout-2.2.0\AndroidManifest.xml:7:5-20
@@ -119,22 +119,22 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\di
 		ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:9:9-35
 	android:theme
 		ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:14:9-41
-activity#com.diogo.coolweatherapp.MainActivity
-ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:15:9-22:20
+activity#com.diogo.coolweatherapp.ui.MainActivity
+ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:16:9-23:20
 	android:exported
-		ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:17:13-36
+		ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:18:13-36
 	android:name
-		ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:16:13-41
+		ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:17:13-44
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:18:13-21:29
+ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:19:13-22:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:19:17-69
+ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:19:25-66
+		ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:20:17-77
+ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:20:27-74
+		ADDED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml:21:27-74
 uses-sdk
 INJECTED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\diogo\Documents\Faculdade\Computacao Movel\Computacao-Movel\CoolWeatherApp\app\src\main\AndroidManifest.xml
