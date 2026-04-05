@@ -20,17 +20,18 @@ data class Vec2(val x: Double, val y: Double) : Comparable<Vec2> {
 
     // Comparação por magnitude (tamanho do vetor)
     override fun compareTo(other: Vec2): Int =
-        magnitude().compareTo(other.magnitude())
+        magnitude.compareTo(other.magnitude)
 
     // NOTA: As funções component1() e component2() foram removidas
     // porque o Kotlin já as cria automaticamente em "data classes".
 
-    fun magnitude(): Double = sqrt(x * x + y * y)
+    val magnitude: Double
+        get() = sqrt(x * x + y * y)
 
     fun dot(other: Vec2): Double = x * other.x + y * other.y
 
     fun normalized(): Vec2 {
-        val mag = magnitude()
+        val mag = magnitude
         require(mag != 0.0) { "Cannot normalize a zero vector" }
         return Vec2(x / mag, y / mag)
     }
@@ -47,7 +48,7 @@ fun main() {
 
     println("=== Teste Secção 1.4 ===")
     println("Vetor 1: $v1")
-    println("Magnitude de v1: ${v1.magnitude()}") // Deve dar 5.0
+    println("Magnitude de v1: ${v1.magnitude}") // Deve dar 5.0
     println("Soma v1 + v2: ${v1 + v2}")
     println("Multiplicação (2.0 * v1): ${2.0 * v1}")
 }

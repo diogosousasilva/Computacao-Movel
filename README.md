@@ -13,9 +13,10 @@ The repository is organised into two tutorial folders that follow the assignment
 2. **Library System** — a console-based library management system demonstrating OOP with abstract classes, inheritance, data classes, companion objects, and custom property setters.
 3. **CountryInfo** — a full Android application that searches for a country by name and shows its flag, capital, population, and region, fetched from the [REST Countries API](https://restcountries.com/).
 
-**Tutorial 2** covers advanced Kotlin and the weather Android application:
+**Tutorial 2** covers advanced Kotlin, the weather Android application, and AI Assisted Project Planning:
 4. **Kotlin Exercises** — advanced Kotlin: sealed classes, generics, higher-order functions/lambdas, and operator overloading — each implemented in a separate file.
 5. **CoolWeatherApp** — an Android weather application using the Open-Meteo API, with MVVM architecture, GPS location, Day/Night theming, and XML-driven WMO weather codes.
+6. **AI Assisted Development (MIP-2)** — AI-guided planning and documentation for a new Android application (Image Explorer), resulting in a complete `docs/` spec folder.
 
 ## Features
 
@@ -53,11 +54,17 @@ The repository is organised into two tutorial folders that follow the assignment
 
 ### CoolWeatherApp (`Tutorial 2/CoolWeatherApp/`)
 - Fetches real-time weather data from the [Open-Meteo API](https://api.open-meteo.com/).
-- Displays temperature, wind speed, pressure, weather description, and icon for the current WMO weather code.
+- Displays temperature, wind speed and direction (e.g., 14.5 km/h (220°)), pressure, weather description, and icon for the current WMO weather code.
 - Dynamic **Day** (light blue) and **Night** (dark) themes applied programmatically based on the current hour.
+- **Localization:** Full language support for both English (`values/strings.xml`) and Portuguese (`values-pt/strings.xml`).
 - Portrait and landscape layouts (`layout/` and `layout-land/`).
 - **GPS Integration:** On startup, requests location permissions and uses `FusedLocationProviderClient` to display the device's real coordinates.
 - **XML WMO Resources:** Weather code mappings (codes, descriptions, icon names) stored in `strings.xml` as `<integer-array>` and `<string-array>` resources — no hardcoded enums.
+
+### AI Assisted Development (MIP-2) (`docs/`)
+- Comprehensive Markdown documentation generated alongside an AI agent acting as a Senior Android Developer.
+- Extensively covers the design and architecture of an "Image Explorer" app sourcing data from the public Dog CEO API.
+- Contains implementation plans, MVVM architecture rules, database and response models, UI planning, and prompt logs.
 - **MVVM Architecture:** `WeatherViewModel` handles all API calls and exposes a `LiveData<WeatherState>` sealed class. `MainActivity` observes it reactively with zero business logic.
 
 ## Technologies Used
@@ -83,6 +90,18 @@ The repository is organised into two tutorial folders that follow the assignment
 
 ```
 Computacao-Movel/
+├── docs/                                  # Section 3 (MIP-2) — AI Assisted Planning
+│   ├── 01_overview.md                     # Idea and problem statement
+│   ├── 02_features.md                     # Core & non-functional requirements
+│   ├── 03_ui_design.md                    # Material 3 & UI plans
+│   ├── 04_architecture.md                 # MVVM & Flow structure
+│   ├── 05_data_models.md                  # Room Entity & Retrofit Models
+│   ├── 06_database.md                     # DAO definition
+│   ├── 07_api_usage.md                    # Endpoints for Dog CEO API
+│   ├── 08_implementation_plan.md          # 5-Phase rollout plan
+│   ├── agents.md                          # Guidance used to prime the AI Assistant
+│   └── prompts_log.md                     # Raw prompts used for generation
+│
 ├── Enunciados/
 │   ├── ENIDH_CM_Tutorial1_2026.pdf
 │   └── ENIDH_CM_Tutorial2_2026.pdf
@@ -149,10 +168,12 @@ Computacao-Movel/
 │       │   │       ├── layout-land/activity_main.xml   # Landscape layout
 │       │   │       ├── drawable/ic_weather_*.xml       # Weather condition icons
 │       │   │       ├── mipmap-anydpi-v26/              # Adaptive launcher icon
-│       │   │       └── values/
-│       │   │           ├── strings.xml                 # WMO codes/descriptions (XML arrays)
-│       │   │           ├── colors.xml                  # Day/Night color palette
-│       │   │           └── themes.xml                  # Theme.Day + Theme.Night
+│       │   │       ├── values/                     
+│       │   │       │   ├── strings.xml                 # Base English labels & mappings
+│       │   │       │   ├── colors.xml                  # Day/Night color palette
+│       │   │       │   └── themes.xml                  # Theme.Day + Theme.Night
+│       │   │       └── values-pt/                      # Portuguese Localization
+│       │   │           └── strings.xml                 # Portuguese translations
 │       │   ├── build.gradle.kts
 │       │   └── proguard-rules.pro
 │       ├── gradle/libs.versions.toml
@@ -219,8 +240,15 @@ kotlinc VectorLibrary.kt -include-runtime -d vector.jar && java -jar vector.jar
 - **Networking** — `WeatherRepository` builds the Open-Meteo URL and calls `URL(url).readText()`. The JSON response is parsed with `Gson.fromJson()` into `WeatherData` / `CurrentWeather` / `Hourly` data classes.
 - **GPS Integration** — `MainActivity` registers an `ActivityResultContracts.RequestMultiplePermissions` launcher. On grant, it calls `FusedLocationProviderClient.lastLocation` and passes the real coordinates into the ViewModel. Falls back to Lisbon (38.76, −9.12) if denied.
 - **XML WMO Resources** — WMO codes, descriptions, and icon drawable names are stored as three parallel arrays in `strings.xml` (`wmo_codes`, `wmo_descriptions`, `wmo_icon_names`). `MainActivity.getWeatherCodeInfo()` resolves them at runtime using `resources.getIntArray` / `getStringArray` / `getIdentifier`.
+- **Localization & Data Expansion** — In addition to the base English `strings.xml`, a `values-pt/strings.xml` serves up Portuguese translations on supported devices. The Wind reading interpolates two variables (speed and direction layout-safe formatting).
 - **Day/Night Theme** — `applyDayNightTheme()` in `MainActivity.onCreate` reads `Calendar.HOUR_OF_DAY` and calls `setTheme(R.style.Theme_Day)` or `setTheme(R.style.Theme_Night)` **before** `super.onCreate()` to ensure the theme is applied correctly. `Theme.Day` uses a light blue background; `Theme.Night` uses a dark navy/black background.
 - **Portrait & Landscape** — Two separate XML layouts: `layout/activity_main.xml` (vertical scroll, stacked) and `layout-land/activity_main.xml` (two-column `ConstraintLayout` with a `Guideline`).
+
+### AI Assisted Development (MIP-2)
+
+- **Scenario Simulation**: The user defines constraints with AntiGravity to brainstorm an Image Explorer Application for querying Dog imagery (via Dog CEO API).
+- **Component Engineering**: Strict guidelines (`agents.md`) enforce clean architecture and generation of robust data models, an interface for persistent offline favorites via DAO implementations (`06_database.md`), and HTTP fetching schemas (`07_api_usage.md`). 
+- **Delivery**: Fully Markdown-annotated documentation ready for direct implementation.
 
 ## Conclusion
 

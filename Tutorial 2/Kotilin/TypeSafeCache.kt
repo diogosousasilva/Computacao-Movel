@@ -13,9 +13,14 @@ class Cache<K : Any, V : Any> {
         store.remove(key)
     }
 
-    fun size(): Int = store.size
+    fun clear() {
+        store.clear()
+    }
 
-    fun getOrPut(key: K, default: () -> V): V {
+    val size: Int
+        get() = store.size
+
+    fun getOrDefault(key: K, default: () -> V): V {
         return store.getOrPut(key, default)
     }
 
@@ -36,4 +41,11 @@ fun main() {
     val cache = Cache<String, String>()
     cache.put("ID", "12345")
     println("Valor na Cache: ${cache.get("ID")}")
+    println("Tamanho atual: ${cache.size}")
+    
+    val name = cache.getOrDefault("Name") { "Sem Nome" }
+    println("Nome: $name")
+    
+    cache.clear()
+    println("Tamanho apos clear: ${cache.size}")
 }

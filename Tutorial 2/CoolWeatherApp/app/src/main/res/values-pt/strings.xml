@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cool Weather App</string>
+    <string name="weather_icon_desc">Ícone de condição meteorológica</string>
+    <string name="placeholder_weather_desc">A carregar…</string>
+    <string name="placeholder_temperature">--°C</string>
+    <string name="placeholder_windspeed">Vento: -- km/h</string>
+    <string name="placeholder_pressure">Pressão: -- hPa</string>
+    <string name="placeholder_time">--</string>
+    <string name="coordinates_hint">lat,lon (ex: 38.76,-9.12)</string>
+    <string name="update_button">Atualizar</string>
+    <string name="temperature_format">%.1f°C</string>
+    <string name="windspeed_format">💨 Vento: %.1f km/h (%d°)</string>
+    <string name="pressure_format">🌡 Pressão: %.1f hPa</string>
+    <string name="time_format">🕐 %s</string>
+</resources>

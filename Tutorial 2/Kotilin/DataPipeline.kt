@@ -32,9 +32,11 @@ fun buildPipeline(block: Pipeline.() -> Unit): Pipeline =
 fun main() {
     val pipeline = buildPipeline {
         addStage("Trim") { lines -> lines.map { it.trim() } }
-        addStage("Upper") { lines -> lines.map { it.uppercase() } }
+        addStage("Filter Errors") { lines -> lines.filterNot { it.contains("ERROR") } }
+        addStage("Uppercase") { lines -> lines.map { it.uppercase() } }
+        addStage("Add Index") { lines -> lines.mapIndexed { index, line -> "${index + 1}: $line" } }
     }
-    val result = pipeline.execute(listOf("  ola  ", "  mundo  "))
+    val result = pipeline.execute(listOf("  ola  ", "  erro: ERROR ocorreu  ", "  mundo  "))
     println("Pipeline: ${pipeline.describe()}")
     println("Resultado: $result")
 }

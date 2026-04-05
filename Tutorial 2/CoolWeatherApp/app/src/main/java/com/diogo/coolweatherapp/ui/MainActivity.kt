@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 
         // Current weather values
         binding.tvTemperature.text = getString(R.string.temperature_format, cw.temperature)
-        binding.tvWindspeed.text = getString(R.string.windspeed_format, cw.windspeed)
+        binding.tvWindspeed.text = getString(R.string.windspeed_format, cw.windspeed, cw.winddirection)
         binding.tvTime.text = getString(R.string.time_format, cw.time)
 
         // Find current hour index for pressure

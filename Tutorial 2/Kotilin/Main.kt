@@ -17,5 +17,5 @@ fun main() {
 
     // 1.4 Vectores
     val v1 = Vec2(3.0, 4.0)
-    println("Magnitude do vetor $v1: ${v1.magnitude()}")
+    println("Magnitude do vetor $v1: ${v1.magnitude}")
 }
