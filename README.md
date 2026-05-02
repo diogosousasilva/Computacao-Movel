@@ -2,11 +2,11 @@
 
 ## Assignment Context
 
-This project was developed as part of the **Computação Móvel** (Mobile Computing) course at ENIDH, covering **Tutorial 1** and **Tutorial 2**. The objective is to progressively master Kotlin and Android development — starting from the language fundamentals, advancing through sealed classes, generics, functional programming, and operator overloading, and culminating in a full Android weather application with MVVM architecture, GPS, and REST API integration.
+This project was developed as part of the **Computação Móvel** (Mobile Computing) course at ENIDH, covering **Tutorial 1**, **Tutorial 2**, and **Tutorial 3**. The objective is to progressively master Kotlin and Android development — starting from the language fundamentals, advancing through sealed classes, generics, functional programming, operator overloading, and culminating in full Android weather applications with MVVM architecture, GPS, REST API integration, and modern UI toolkits like Jetpack Compose.
 
 ## Project Description
 
-The repository is organised into two tutorial folders that follow the assignment structure:
+The repository is organised into three tutorial folders that follow the assignment structure:
 
 **Tutorial 1** covers Kotlin basics and the first Android application:
 1. **Kotlin Basics** — small programs demonstrating arrays, ranges, `generateSequence`, string formatting, and functional transformations in Kotlin (Exercises 1, 2, and 3).
@@ -17,6 +17,10 @@ The repository is organised into two tutorial folders that follow the assignment
 4. **Kotlin Exercises** — advanced Kotlin: sealed classes, generics, higher-order functions/lambdas, and operator overloading — each implemented in a separate file.
 5. **CoolWeatherApp** — an Android weather application using the Open-Meteo API, with MVVM architecture, GPS location, Day/Night theming, and XML-driven WMO weather codes.
 6. **AI Assisted Development (MIP-2)** — AI-guided planning and documentation for a new Android application (Image Explorer), resulting in a complete `Tutorial 2/docs/` spec folder.
+
+**Tutorial 3** introduces Kotlin Annotation Processing and modern Android UI development with Jetpack Compose:
+7. **Annotation Processors** — creating compile-time code generators using `kapt` and `KotlinPoet` to build wrapper classes and implement regex-based data extractors.
+8. **CoolJetpackWeatherApp** — a modern rewrite of the weather application utilizing **Jetpack Compose** for a declarative UI, **Ktor** for networking, Kotlin Serialization, and a Google Maps integration for location picking.
 
 ## Features
 
@@ -67,6 +71,17 @@ The repository is organised into two tutorial folders that follow the assignment
 - Contains implementation plans, MVVM architecture rules, database and response models, UI planning, and prompt logs.
 - **MVVM Architecture:** `WeatherViewModel` handles all API calls and exposes a `LiveData<WeatherState>` sealed class. `MainActivity` observes it reactively with zero business logic.
 
+### Annotation Processors (`Tutorial 3/GreetingProcessorProject/`)
+- **`@Greeting` Processor:** A custom annotation processor utilizing `kapt` and `KotlinPoet`. When applied to a method, it generates a wrapper class that logs the greeting message before delegating execution to the original method using Composition.
+- **`@Extract` Regex Challenge:** Generates a robust `DataProcessorExtractor` class. The processor scans abstract methods annotated with `@Extract(regex = "...")` and automatically generates method implementations to extract regex group matches from a string input.
+
+### CoolJetpackWeatherApp (`Tutorial 3/CoolJetpackWeatherApp/`)
+- **Jetpack Compose UI:** 100% declarative UI architecture using composables like `WeatherUI`, `CoordinatesCard`, and `WeatherCard`. Replaces traditional XML layouts.
+- **Ktor Networking:** Uses `HttpClient` and `io.ktor` for asynchronous weather data fetching from Open-Meteo, replacing Retrofit.
+- **StateFlow & ViewModel:** Employs modern Kotlin Coroutines `StateFlow` to hoist UI state (`WeatherUIState`) efficiently from the ViewModel to Compose components.
+- **Responsive Layouts:** Employs conditional Compose rendering for seamless adaptations between Portrait and Landscape orientations.
+- **Google Maps Integration (Optional Feature):** A dedicated `LocationPickerActivity` relying on `com.google.maps.android:maps-compose` to allow users to visually select geographic coordinates on a world map.
+
 ## Technologies Used
 
 | Technology | Purpose |
@@ -85,6 +100,11 @@ The repository is organised into two tutorial folders that follow the assignment
 | **Kotlin Coroutines** | Asynchronous network calls (CountryInfo) |
 | **View Binding** | Type-safe access to XML views |
 | **ConstraintLayout** | Responsive layout |
+| **Jetpack Compose** | Declarative UI framework (Tutorial 3) |
+| **Ktor Client** | Modern networking client (Tutorial 3) |
+| **Kotlin Serialization** | Native JSON parsing for Ktor (Tutorial 3) |
+| **KotlinPoet & Kapt** | Annotation processing and code generation (Tutorial 3) |
+| **Google Maps Compose** | Interactive map integration (Tutorial 3) |
 
 ## Project Structure
 
@@ -180,6 +200,21 @@ Computacao-Movel/
 │       ├── agents.md                      # Guidance used to prime the AI Assistant
 │       └── prompts_log.md                 # Raw prompts used for generation
 │
+├── Tutorial 3/
+│   ├── GreetingProcessorProject/          # Section 1 & 2 — Annotation Processing
+│   │   ├── annotations/                   # Defines @Greeting and @Extract
+│   │   ├── processor/                     # kapt processor using KotlinPoet
+│   │   └── app/                           # Demonstrates generated code usage
+│   │
+│   └── CoolJetpackWeatherApp/             # Section 3 — Jetpack Compose Weather App
+│       ├── app/src/main/
+│       │   ├── java/com/example/cooljetpackweatherapp/
+│       │   │   ├── data/                  # Ktor API Client & Serializable Models
+│       │   │   ├── ui/                    # Compose UI components and Google Maps picker
+│       │   │   └── viewmodel/             # StateFlow-driven WeatherViewModel
+│       │   └── AndroidManifest.xml
+│       └── build.gradle.kts
+│
 └── README.md
 ```
 
@@ -225,6 +260,14 @@ kotlinc VectorLibrary.kt -include-runtime -d vector.jar && java -jar vector.jar
 4. Click **Run ▶**. On first launch, grant the location permission for GPS coordinates.
 5. The app shows real-time weather for your current location. Type `lat,lon` in the field and tap **Update** to change coordinates.
 
+### Tutorial 3 (`Tutorial 3/GreetingProcessorProject/` & `CoolJetpackWeatherApp/`)
+
+1. To run the annotation processors, open **IntelliJ IDEA** and load the `GreetingProcessorProject`.
+2. Ensure you have `Load Gradle Changes`. 
+3. Run the `main()` function in `app/src/main/kotlin/com/example/app/Main.kt`. The output will display the execution of the generated wrappers and regex extractors.
+4. To run the Jetpack Compose app, open **Android Studio** and load `Tutorial 3/CoolJetpackWeatherApp/`.
+5. Sync Gradle and click **Run ▶** on an API 26+ device. Provide a valid Google Maps API Key in the Manifest to enable the Location Picker functionality.
+
 ## Implementation Explanation
 
 ### Kotlin Exercises (`Tutorial 2/Kotilin/`)
@@ -250,6 +293,13 @@ kotlinc VectorLibrary.kt -include-runtime -d vector.jar && java -jar vector.jar
 - **Component Engineering**: Strict guidelines (`agents.md`) enforce clean architecture and generation of robust data models, an interface for persistent offline favorites via DAO implementations (`06_database.md`), and HTTP fetching schemas (`07_api_usage.md`). 
 - **Delivery**: Fully Markdown-annotated documentation ready for direct implementation.
 
+### Tutorial 3 Implementation
+
+- **Compile-Time Metaprogramming** — The `GreetingProcessorProject` utilizes `javax.annotation.processing.AbstractProcessor` integrated tightly with Gradle via `kapt`. It uses `KotlinPoet` to dynamically scaffold `TypeSpec` and `FunSpec` components, emitting clean, type-safe Kotlin source files during the compilation phase, drastically reducing boilerplate code in runtime.
+- **Jetpack Compose Paradigm** — The rewrite from XML transforms the UI layer entirely. Everything from the structural layout to the text fields acts as a pure reactive function dependent on `WeatherUIState`.
+- **Ktor Networking** — Shifting away from Retrofit and standard `URL.readText()`, the application now takes advantage of `Ktor`'s robust HttpClient framework and integrates strictly with `kotlinx.serialization` for seamless JSON extraction, demonstrating a more idiomatic Kotlin networking stack.
+- **State Hoisting** — ViewModel responsibilities are sharpened using Kotlin's `StateFlow`. As synchronous updates occur (like input changes or network returns), Compose intelligently re-evaluates the component tree naturally without requiring manual view lookups or complex observation bindings.
+
 ## Conclusion
 
-This project covers both Tutorial 1 and Tutorial 2: fundamental Kotlin programming, object-oriented design, advanced language features (sealed classes, generics, higher-order functions, operator overloading), and Android application development. The CoolWeatherApp demonstrates clean MVVM architecture, real-time REST API consumption with Gson, GPS integration, programmatic theming, responsive portrait/landscape layouts, and resource-driven WMO weather code mapping — all written in Kotlin following modern Android development practices.
+This project covers Tutorial 1, Tutorial 2, and Tutorial 3: fundamental Kotlin programming, object-oriented design, advanced language features (sealed classes, generics, operator overloading, compile-time annotation processing with kapt), and Android application development. The CoolWeatherApps demonstrate clean MVVM architecture, real-time REST API consumption using Retrofit and Ktor, GPS integration, Google Maps integration, responsive layouts across both XML and Jetpack Compose toolkits — all written following modern Android development practices.
