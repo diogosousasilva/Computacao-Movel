@@ -20,10 +20,10 @@ fun WeatherCard(
 ) {
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(modifier = Modifier.padding(16.dp)) {
-            WeatherRow(label = stringResource(R.string.sea_level_pressure), value = "\$seaLevelPressure hPa")
-            WeatherRow(label = stringResource(R.string.wind_direction), value = "\$windDirection°")
-            WeatherRow(label = stringResource(R.string.wind_speed), value = "\$windSpeed km/h")
-            WeatherRow(label = stringResource(R.string.temperature), value = "\$temperature°C")
+            WeatherRow(label = stringResource(R.string.sea_level_pressure), value = "$seaLevelPressure hPa")
+            WeatherRow(label = stringResource(R.string.wind_direction), value = "$windDirection°")
+            WeatherRow(label = stringResource(R.string.wind_speed), value = "$windSpeed km/h")
+            WeatherRow(label = stringResource(R.string.temperature), value = "$temperature°C")
             WeatherRow(label = stringResource(R.string.time), value = time)
         }
     }

@@ -3,7 +3,7 @@ package com.example.cooljetpackweatherapp.ui
 import android.content.Intent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Public
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -33,7 +33,7 @@ fun CoordinatesCard(
                 IconButton(onClick = {
                     context.startActivity(Intent(context, LocationPickerActivity::class.java))
                 }) {
-                    Icon(imageVector = Icons.Default.Public, contentDescription = "Pick Location")
+                    Icon(imageVector = Icons.Default.LocationOn, contentDescription = "Pick Location")
                 }
             }
             Spacer(modifier = Modifier.height(8.dp))
