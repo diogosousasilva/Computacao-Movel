@@ -16,7 +16,7 @@ The repository is organised into three tutorial folders that follow the assignme
 **Tutorial 2** covers advanced Kotlin, the weather Android application, and AI Assisted Project Planning:
 4. **Kotlin Exercises** — advanced Kotlin: sealed classes, generics, higher-order functions/lambdas, and operator overloading — each implemented in a separate file.
 5. **CoolWeatherApp** — an Android weather application using the Open-Meteo API, with MVVM architecture, GPS location, Day/Night theming, and XML-driven WMO weather codes.
-6. **AI Assisted Development (MIP-2)** — AI-guided planning and documentation for a new Android application (Image Explorer), resulting in a complete `Tutorial 2/docs/` spec folder.
+6. **AI Assisted Development (MIP-2)** — AI-guided planning and generation of a new Android application (Image Explorer), resulting in a complete `Tutorial 2/docs/` spec folder and a fully functional Android project in `Tutorial 2/ImageExplorer/`.
 
 **Tutorial 3** introduces Kotlin Annotation Processing and modern Android UI development with Jetpack Compose:
 7. **Annotation Processors** — creating compile-time code generators using `kapt` and `KotlinPoet` to build wrapper classes and implement regex-based data extractors.
@@ -65,11 +65,12 @@ The repository is organised into three tutorial folders that follow the assignme
 - **GPS Integration:** On startup, requests location permissions and uses `FusedLocationProviderClient` to display the device's real coordinates.
 - **XML WMO Resources:** Weather code mappings (codes, descriptions, icon names) stored in `strings.xml` as `<integer-array>` and `<string-array>` resources — no hardcoded enums.
 
-### AI Assisted Development (MIP-2) (`Tutorial 2/docs/`)
-- Comprehensive Markdown documentation generated alongside an AI agent acting as a Senior Android Developer.
-- Extensively covers the design and architecture of an "Image Explorer" app sourcing data from the public Dog CEO API.
-- Contains implementation plans, MVVM architecture rules, database and response models, UI planning, and prompt logs.
-- **MVVM Architecture:** `WeatherViewModel` handles all API calls and exposes a `LiveData<WeatherState>` sealed class. `MainActivity` observes it reactively with zero business logic.
+### AI Assisted Development & Image Explorer (MIP-2) (`Tutorial 2/ImageExplorer/` & `docs/`)
+- **Documentation:** Comprehensive Markdown documentation (`docs/`) generated alongside an AI agent acting as a Senior Android Developer, covering the design and architecture of an "Image Explorer" app sourcing data from the public Dog CEO API.
+- **Generated App:** A fully functional Android application generated automatically based on the AI documentation.
+- **Features:** Fetches random dog images from the Dog CEO API and displays them in a grid.
+- **Offline Favorites:** Users can favorite images, which are saved persistently using **Room Database** for offline viewing.
+- **Architecture:** MVVM architecture with `HomeViewModel` and `FavoritesViewModel`, leveraging `Retrofit` for networking, `Glide` for images, and Kotlin Coroutines/Flow for reactive data streams.
 
 ### Annotation Processors (`Tutorial 3/GreetingProcessorProject/`)
 - **`@Greeting` Processor:** A custom annotation processor utilizing `kapt` and `KotlinPoet`. When applied to a method, it generates a wrapper class that logs the greeting message before delegating execution to the original method using Composition.
@@ -188,17 +189,24 @@ Computacao-Movel/
 │   │   ├── build.gradle.kts
 │   │   └── settings.gradle.kts
 │   │
-│   └── docs/                              # Section 3 (MIP-2) — AI Assisted Planning
-│       ├── 01_overview.md                 # Idea and problem statement
-│       ├── 02_features.md                 # Core & non-functional requirements
-│       ├── 03_ui_design.md                # Material 3 & UI plans
-│       ├── 04_architecture.md             # MVVM & Flow structure
-│       ├── 05_data_models.md              # Room Entity & Retrofit Models
-│       ├── 06_database.md                 # DAO definition
-│       ├── 07_api_usage.md                # Endpoints for Dog CEO API
-│       ├── 08_implementation_plan.md      # 5-Phase rollout plan
-│       ├── agents.md                      # Guidance used to prime the AI Assistant
-│       └── prompts_log.md                 # Raw prompts used for generation
+│   ├── docs/                              # Section 3 (MIP-2) — AI Assisted Planning
+│   │   ├── 01_overview.md                 # Idea and problem statement
+│   │   ├── 02_features.md                 # Core & non-functional requirements
+│   │   ├── 03_ui_design.md                # Material 3 & UI plans
+│   │   ├── 04_architecture.md             # MVVM & Flow structure
+│   │   ├── 05_data_models.md              # Room Entity & Retrofit Models
+│   │   ├── 06_database.md                 # DAO definition
+│   │   ├── 07_api_usage.md                # Endpoints for Dog CEO API
+│   │   ├── 08_implementation_plan.md      # 5-Phase rollout plan
+│   │   ├── agents.md                      # Guidance used to prime the AI Assistant
+│   │   └── prompts_log.md                 # Raw prompts used for generation
+│   │
+│   └── ImageExplorer/                     # Section 3 (MIP-2) — Generated Android App
+│       ├── app/src/main/java/com/diogo/imageexplorer/
+│       │   ├── data/                      # Room Database (Favorites) & Retrofit (Dog CEO)
+│       │   ├── ui/                        # MVVM ViewModels, Fragments (Home, Favorites), Adapter
+│       │   └── MainActivity.kt
+│       └── build.gradle.kts
 │
 ├── Tutorial 3/
 │   ├── GreetingProcessorProject/          # Section 1 & 2 — Annotation Processing
@@ -260,6 +268,14 @@ kotlinc VectorLibrary.kt -include-runtime -d vector.jar && java -jar vector.jar
 4. Click **Run ▶**. On first launch, grant the location permission for GPS coordinates.
 5. The app shows real-time weather for your current location. Type `lat,lon` in the field and tap **Update** to change coordinates.
 
+### Image Explorer (MIP-2) (`Tutorial 2/ImageExplorer/`)
+
+1. Open **Android Studio** and select **File → Open → `Tutorial 2/ImageExplorer/`**.
+2. Wait for Gradle to sync and download dependencies (Retrofit, Room, Glide).
+3. Connect a device or emulator with **API 26+**.
+4. Click **Run ▶**.
+5. Browse random dogs on the Home tab, favorite them, and view your saved dogs on the Favorites tab (available offline).
+
 ### Tutorial 3 (`Tutorial 3/GreetingProcessorProject/` & `CoolJetpackWeatherApp/`)
 
 1. To run the annotation processors, open **IntelliJ IDEA** and load the `GreetingProcessorProject`.
@@ -287,11 +303,11 @@ kotlinc VectorLibrary.kt -include-runtime -d vector.jar && java -jar vector.jar
 - **Day/Night Theme** — `applyDayNightTheme()` in `MainActivity.onCreate` reads `Calendar.HOUR_OF_DAY` and calls `setTheme(R.style.Theme_Day)` or `setTheme(R.style.Theme_Night)` **before** `super.onCreate()` to ensure the theme is applied correctly. `Theme.Day` uses a light blue background; `Theme.Night` uses a dark navy/black background.
 - **Portrait & Landscape** — Two separate XML layouts: `layout/activity_main.xml` (vertical scroll, stacked) and `layout-land/activity_main.xml` (two-column `ConstraintLayout` with a `Guideline`).
 
-### AI Assisted Development (MIP-2)
+### AI Assisted Development & Image Explorer (MIP-2)
 
 - **Scenario Simulation**: The user defines constraints with AntiGravity to brainstorm an Image Explorer Application for querying Dog imagery (via Dog CEO API).
-- **Component Engineering**: Strict guidelines (`agents.md`) enforce clean architecture and generation of robust data models, an interface for persistent offline favorites via DAO implementations (`06_database.md`), and HTTP fetching schemas (`07_api_usage.md`). 
-- **Delivery**: Fully Markdown-annotated documentation ready for direct implementation.
+- **Component Engineering**: Strict guidelines (`agents.md`) enforce clean architecture and generation of robust data models, an interface for persistent offline favorites via Room DAO implementations (`06_database.md`), and HTTP fetching schemas (`07_api_usage.md`). 
+- **Code Generation**: The AI agent successfully executed the planned architecture, creating the complete Android project from scratch with Jetpack Navigation, ViewBinding, Retrofit, Glide, and Room.
 
 ### Tutorial 3 Implementation
 

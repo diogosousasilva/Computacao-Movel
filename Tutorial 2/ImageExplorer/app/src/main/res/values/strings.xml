@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Image Explorer</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="action_favorite">Favorite</string>
+    <string name="error_loading">Error loading images. Swipe down to retry.</string>
+</resources>
