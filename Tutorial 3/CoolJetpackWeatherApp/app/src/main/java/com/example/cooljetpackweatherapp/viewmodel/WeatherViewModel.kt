@@ -49,4 +49,30 @@ class WeatherViewModel : ViewModel() {
             }
         }
     }
+
+    /**
+     * Adds the current latitude/longitude as a favorite with the given name.
+     */
+    fun addFavorite(name: String) {
+        val currentState = _uiState.value
+        val newFavorite = FavoriteLocation(
+            name = name,
+            latitude = currentState.latitude,
+            longitude = currentState.longitude
+        )
+        _uiState.update { it.copy(favorites = it.favorites + newFavorite) }
+    }
+
+    /**
+     * Selects a favorite location: sets its coordinates and automatically fetches weather.
+     */
+    fun selectFavorite(favorite: FavoriteLocation) {
+        _uiState.update {
+            it.copy(
+                latitude = favorite.latitude,
+                longitude = favorite.longitude
+            )
+        }
+        fetchWeather()
+    }
 }

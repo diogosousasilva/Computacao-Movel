@@ -19,8 +19,8 @@ The repository is organised into three tutorial folders that follow the assignme
 6. **AI Assisted Development (MIP-2)** — AI-guided planning and generation of a new Android application (Image Explorer), resulting in a complete `Tutorial 2/docs/` spec folder and a fully functional Android project in `Tutorial 2/ImageExplorer/`.
 
 **Tutorial 3** introduces Kotlin Annotation Processing and modern Android UI development with Jetpack Compose:
-7. **Annotation Processors** — creating compile-time code generators using `kapt` and `KotlinPoet` to build wrapper classes and implement regex-based data extractors.
-8. **CoolJetpackWeatherApp** — a modern rewrite of the weather application utilizing **Jetpack Compose** for a declarative UI, **Ktor** for networking, Kotlin Serialization, and a Google Maps integration for location picking.
+7. **Annotation Processors** — creating compile-time code generators using `kapt` and `KotlinPoet` to build wrapper classes and implement regex-based data extractors. Refactored to target JVM 17 and utilize annotations from a unified root package.
+8. **CoolJetpackWeatherApp** — a modern rewrite of the weather application utilizing **Jetpack Compose** for a declarative UI, **Ktor** for networking, Kotlin Serialization, a Google Maps integration for location picking, a **Favorite Locations** system, and dynamically rendered weather iconography mapping WMO codes to native XML drawables.
 
 ## Features
 
@@ -73,18 +73,20 @@ The repository is organised into three tutorial folders that follow the assignme
 - **Architecture:** MVVM architecture with `HomeViewModel` and `FavoritesViewModel`, leveraging `Retrofit` for networking, `Glide` for images, and Kotlin Coroutines/Flow for reactive data streams.
 
 ### Annotation Processors (`Tutorial 3/GreetingProcessorProject/`)
-- **`@Greeting` Processor:** A custom annotation processor utilizing `kapt` and `KotlinPoet`. When applied to a method, it generates a wrapper class that logs the greeting message before delegating execution to the original method using Composition.
+- **`@Greeting` Processor:** A custom annotation processor utilizing `kapt` and `KotlinPoet`. When applied to a method, it generates a wrapper class that logs the greeting message before delegating execution to the original method using Composition. Refactored to import from the flat root package `annotations`.
 - **`@Extract` Regex Challenge:** Generates a robust `DataProcessorExtractor` class. The processor scans abstract methods annotated with `@Extract(regex = "...")` and automatically generates method implementations to extract regex group matches from a string input.
+- **Tooling & Compatibility:** Downgraded the target toolchain from JVM 23 to JVM 17 to match broader environments and configured the Gradle `application` plugin in the app module to support direct execution.
 
 ### CoolJetpackWeatherApp (`Tutorial 3/CoolJetpackWeatherApp/`)
 - **Jetpack Compose UI:** 100% declarative UI architecture using composables like `WeatherUI`, `CoordinatesCard`, and `WeatherCard`. Replaces traditional XML layouts.
 - **Ktor Networking:** Uses `HttpClient` and `io.ktor` for asynchronous weather data fetching from Open-Meteo, replacing Retrofit.
 - **StateFlow & ViewModel:** Employs modern Kotlin Coroutines `StateFlow` to hoist UI state (`WeatherUIState`) efficiently from the ViewModel to Compose components.
 - **Responsive Layouts:** Employs conditional Compose rendering for seamless adaptations between Portrait and Landscape orientations.
-- **WMO Weather Code Display:** Translates standard WMO weather codes into user-friendly descriptions with emoji icons (e.g., ☀️ Clear sky, 🌧️ Rain, ⛈️ Thunderstorm).
+- **WMO Weather Code Display:** Translates standard WMO weather codes into user-friendly descriptions using a custom mapping module and displays matching vector-based drawable iconography (e.g. `ic_weather_clear`, `ic_weather_rain`).
 - **Loading & Error States:** Displays a `CircularProgressIndicator` while fetching data and a styled error message on failure.
 - **Full Localization (i18n):** All UI strings use `stringResource()` with complete translations in English (`values/strings.xml`) and Portuguese (`values-pt/strings.xml`).
 - **Google Maps Integration:** A dedicated `LocationPickerActivity` relying on `com.google.maps.android:maps-compose` allows users to visually select geographic coordinates on a world map. Selected coordinates are returned to the main screen via `ActivityResultContracts` and automatically trigger a weather data refresh.
+- **Favorite Locations Bar:** A new `FavoritesBar` component containing a horizontal list of saved coordinates. Users can bookmark their current coordinates via a name prompt dialog and quick-select favorites to automatically update the forecast.
 
 ## Technologies Used
 
@@ -109,6 +111,7 @@ The repository is organised into three tutorial folders that follow the assignme
 | **Kotlin Serialization** | Native JSON parsing for Ktor (Tutorial 3) |
 | **KotlinPoet & Kapt** | Annotation processing and code generation (Tutorial 3) |
 | **Google Maps Compose** | Interactive map integration (Tutorial 3) |
+| **Material Icons Extended** | Expanded vector icon set for UI elements (Tutorial 3) |
 
 ## Project Structure
 
@@ -213,16 +216,20 @@ Computacao-Movel/
 │
 ├── Tutorial 3/
 │   ├── GreetingProcessorProject/          # Section 1 & 2 — Annotation Processing
-│   │   ├── annotations/                   # Defines @Greeting and @Extract
-│   │   ├── processor/                     # kapt processor using KotlinPoet
-│   │   └── app/                           # Demonstrates generated code usage
+│   │   ├── annotations/                   # Defines @Greeting and @Extract annotations (now in the 'annotations' root package)
+│   │   ├── processor/                     # kapt processor using KotlinPoet (configured for Java 17 toolchain)
+│   │   └── app/                           # Demonstrates generated code usage (configured with Gradle application plugin)
 │   │
 │   └── CoolJetpackWeatherApp/             # Section 3 — Jetpack Compose Weather App
 │       ├── app/src/main/
 │       │   ├── java/com/example/cooljetpackweatherapp/
-│       │   │   ├── data/                  # Ktor API Client & Serializable Models
-│       │   │   ├── ui/                    # Compose UI components and Google Maps picker
-│       │   │   └── viewmodel/             # StateFlow-driven WeatherViewModel
+│       │   │   ├── data/                  # Ktor API Client, Serializable Models & WeatherCodeMap (WMO mappings)
+│       │   │   ├── ui/                    # Compose UI components, LocationPickerActivity, and FavoritesBar
+│       │   │   └── viewmodel/             # StateFlow-driven WeatherViewModel & FavoriteLocation models
+│       │   ├── res/
+│       │   │   ├── drawable/              # Weather condition vector icons (ic_weather_*.xml)
+│       │   │   ├── values/                # English strings (with favorites & dialog inputs)
+│       │   │   └── values-pt/             # Portuguese translations (with i18n support)
 │       │   └── AndroidManifest.xml
 │       └── build.gradle.kts
 │
@@ -281,8 +288,11 @@ kotlinc VectorLibrary.kt -include-runtime -d vector.jar && java -jar vector.jar
 
 ### Tutorial 3 (`Tutorial 3/GreetingProcessorProject/` & `CoolJetpackWeatherApp/`)
 
-1. To run the annotation processors, open **IntelliJ IDEA** and load the `GreetingProcessorProject`.
-2. Ensure you have `Load Gradle Changes`. 
+1. To run the annotation processors, open **IntelliJ IDEA** and load the `GreetingProcessorProject`. Alternatively, run the application directly from the command line using:
+   ```bash
+   ./gradlew :app:run
+   ```
+2. Ensure you have `Load Gradle Changes` if using an IDE.
 3. Run the `main()` function in `app/src/main/kotlin/com/example/app/Main.kt`. The output will display the execution of the generated wrappers and regex extractors.
 4. To run the Jetpack Compose app, open **Android Studio** and load `Tutorial 3/CoolJetpackWeatherApp/`.
 5. Sync Gradle and click **Run ▶** on an API 26+ device. A valid Google Maps API Key is already configured in the Manifest for the Location Picker. Tap the location icon to open the map, navigate to a location, and press **Confirm** — the selected coordinates will be sent back and the weather will refresh automatically.
@@ -314,12 +324,13 @@ kotlinc VectorLibrary.kt -include-runtime -d vector.jar && java -jar vector.jar
 
 ### Tutorial 3 Implementation
 
-- **Compile-Time Metaprogramming** — The `GreetingProcessorProject` utilizes `javax.annotation.processing.AbstractProcessor` integrated tightly with Gradle via `kapt`. It uses `KotlinPoet` to dynamically scaffold `TypeSpec` and `FunSpec` components, emitting clean, type-safe Kotlin source files during the compilation phase, drastically reducing boilerplate code in runtime.
+- **Compile-Time Metaprogramming & Build Modernization** — The `GreetingProcessorProject` utilizes `javax.annotation.processing.AbstractProcessor` integrated tightly with Gradle via `kapt`. It uses `KotlinPoet` to dynamically scaffold `TypeSpec` and `FunSpec` components, emitting clean, type-safe Kotlin source files during the compilation phase. The toolchain configuration was standardized on JVM 17 for all modules (`annotations`, `processor`, and `app`). The annotations (`Extract` and `Greeting`) were refactored into a unified root `annotations` package, and the `application` plugin was introduced for simplified command-line run targets.
 - **Jetpack Compose Paradigm** — The rewrite from XML transforms the UI layer entirely. Everything from the structural layout to the text fields acts as a pure reactive function dependent on `WeatherUIState`. The UI renders three distinct states — loading (`CircularProgressIndicator`), error (styled error text), and success (weather data cards) — driven purely by the `WeatherUIState` data class.
 - **Ktor Networking** — Shifting away from Retrofit and standard `URL.readText()`, the application now takes advantage of `Ktor`'s robust HttpClient framework and integrates strictly with `kotlinx.serialization` for seamless JSON extraction, demonstrating a more idiomatic Kotlin networking stack.
-- **State Hoisting** — ViewModel responsibilities are sharpened using Kotlin's `StateFlow`. As synchronous updates occur (like input changes or network returns), Compose intelligently re-evaluates the component tree naturally without requiring manual view lookups or complex observation bindings.
-- **WMO Weather Codes** — The `WeatherCard` composable maps standard WMO weather codes to human-readable descriptions with emoji icons via a `when` expression, covering all major categories (clear, cloudy, fog, drizzle, rain, snow, thunderstorms).
+- **State Hoisting & Flow Management** — ViewModel responsibilities are sharpened using Kotlin's `StateFlow`. As synchronous updates occur (like input changes, favorite selections, or network returns), Compose intelligently re-evaluates the component tree naturally without requiring manual view lookups or complex observation bindings.
+- **WMO Weather Codes & Iconography Mapping** — Replaced the basic emoji representation with a full-fledged vector drawable rendering engine. The new `WeatherCodeMap.kt` links WMO codes to dedicated status drawables (e.g. `ic_weather_clear.xml`, `ic_weather_rain.xml`). The `WeatherCard` was updated to display a beautiful two-column header with the condition text, large temperature layout, and corresponding vector icon retrieved dynamically from resources, separated from the weather metrics via a divider.
 - **Location Picker Round-Trip** — The `LocationPickerActivity` uses `setResult()` to send the map's camera position (latitude/longitude) back to the main screen. `WeatherUI` registers a `rememberLauncherForActivityResult` that receives the coordinates, updates the ViewModel, and triggers an automatic weather fetch — completing a full round-trip flow.
+- **Persistent Location Bookmarking** — Introduced a localized `FavoritesBar` composable supporting persistent list rendering inside both Portrait and Landscape Compose arrangements. Users can add a location by clicking the "+" button, entering a name in a material dialog, and immediately selecting any bookmarked location card to instantly fetch its forecast.
 
 ## Conclusion
 

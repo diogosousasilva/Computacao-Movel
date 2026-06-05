@@ -13,4 +13,9 @@
     <string name="favorite_locations">Locais Favoritos</string>
     <string name="confirm_location">Confirmar Local</string>
     <string name="weather_condition">Condição Meteorológica</string>
+    <string name="add_favorite">Adicionar aos Favoritos</string>
+    <string name="favorite_name_hint">Nome do Local</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Guardar</string>
+    <string name="empty_favorites">Nenhum local favorito adicionado ainda.</string>
 </resources>

@@ -1,5 +1,14 @@
 package com.example.cooljetpackweatherapp.viewmodel
 
+/**
+ * Represents a favorite named location saved by the user.
+ */
+data class FavoriteLocation(
+    val name: String,
+    val latitude: Float,
+    val longitude: Float
+)
+
 data class WeatherUIState(
     val latitude: Float = 38.7223f,
     val longitude: Float = -9.1393f,
@@ -10,5 +19,6 @@ data class WeatherUIState(
     val seaLevelPressure: Float = 0f,
     val time: String = "--",
     val isLoading: Boolean = false,
-    val error: String? = null
+    val error: String? = null,
+    val favorites: List<FavoriteLocation> = emptyList()
 )

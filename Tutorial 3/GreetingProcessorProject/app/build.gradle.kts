@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm")
-    kotlin("kapt") // Needed for annotation processing
+    kotlin("kapt")
+    application
 }
 
 group = "org.example"
@@ -13,12 +14,12 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation(kotlin("stdlib"))
-
-    // Include the annotations module
     implementation(project(":annotations"))
-
-    // Use the annotation processor
     kapt(project(":processor"))
+}
+
+application {
+    mainClass.set("com.example.app.MainKt")
 }
 
 tasks.test {
@@ -26,5 +27,5 @@ tasks.test {
 }
 
 kotlin {
-    jvmToolchain(23)
+    jvmToolchain(17)
 }

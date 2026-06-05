@@ -1,4 +1,4 @@
-package com.dam.annotations
+package annotations
 
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.SOURCE)

@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+    <!-- Dark cloud -->
+    <path android:fillColor="#607D8B"
+        android:pathData="M50,24 A12,12 0 0,0 38,16 A18,18 0 0,0 12,34 L50,34 A12,12 0 0,0 50,24 Z"/>
+    <!-- Rain drops -->
+    <path android:fillColor="#1565C0" android:strokeColor="#1565C0" android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M18,40 L14,52 M28,40 L24,52 M38,40 L34,52 M48,40 L44,52"/>
+</vector>

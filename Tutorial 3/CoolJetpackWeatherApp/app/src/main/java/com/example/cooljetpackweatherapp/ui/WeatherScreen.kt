@@ -18,6 +18,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.cooljetpackweatherapp.R
+import com.example.cooljetpackweatherapp.data.getWeatherCodeMap
+import com.example.cooljetpackweatherapp.viewmodel.FavoriteLocation
 import com.example.cooljetpackweatherapp.viewmodel.WeatherViewModel
 
 @Composable
@@ -44,8 +46,14 @@ fun WeatherUI(weatherViewModel: WeatherViewModel = viewModel()) {
         locationPickerLauncher.launch(Intent(context, LocationPickerActivity::class.java))
     }
 
+    val mapt = getWeatherCodeMap()
+    val wCode = mapt[weatherUIState.weathercode]
+    val wImage = wCode?.image ?: "ic_weather_unknown"
+    val wIcon = context.resources.getIdentifier(wImage, "drawable", context.packageName)
+
     if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
         LandscapeWeatherUI(
+            wIcon = wIcon,
             latitude = weatherUIState.latitude,
             longitude = weatherUIState.longitude,
             temperature = weatherUIState.temperature,
@@ -56,6 +64,7 @@ fun WeatherUI(weatherViewModel: WeatherViewModel = viewModel()) {
             time = weatherUIState.time,
             isLoading = weatherUIState.isLoading,
             error = weatherUIState.error,
+            favorites = weatherUIState.favorites,
             onLatitudeChange = { newValue ->
                 newValue.toFloatOrNull()?.let { weatherViewModel.updateLatitude(it) }
             },
@@ -63,10 +72,17 @@ fun WeatherUI(weatherViewModel: WeatherViewModel = viewModel()) {
                 newValue.toFloatOrNull()?.let { weatherViewModel.updateLongitude(it) }
             },
             onUpdateButtonClick = { weatherViewModel.fetchWeather() },
-            onPickLocation = onPickLocation
+            onPickLocation = onPickLocation,
+            onFavoriteSelected = { favorite ->
+                weatherViewModel.selectFavorite(favorite)
+            },
+            onAddFavorite = { name ->
+                weatherViewModel.addFavorite(name)
+            }
         )
     } else {
         PortraitWeatherUI(
+            wIcon = wIcon,
             latitude = weatherUIState.latitude,
             longitude = weatherUIState.longitude,
             temperature = weatherUIState.temperature,
@@ -77,6 +93,7 @@ fun WeatherUI(weatherViewModel: WeatherViewModel = viewModel()) {
             time = weatherUIState.time,
             isLoading = weatherUIState.isLoading,
             error = weatherUIState.error,
+            favorites = weatherUIState.favorites,
             onLatitudeChange = { newValue ->
                 newValue.toFloatOrNull()?.let { weatherViewModel.updateLatitude(it) }
             },
@@ -84,13 +101,20 @@ fun WeatherUI(weatherViewModel: WeatherViewModel = viewModel()) {
                 newValue.toFloatOrNull()?.let { weatherViewModel.updateLongitude(it) }
             },
             onUpdateButtonClick = { weatherViewModel.fetchWeather() },
-            onPickLocation = onPickLocation
+            onPickLocation = onPickLocation,
+            onFavoriteSelected = { favorite ->
+                weatherViewModel.selectFavorite(favorite)
+            },
+            onAddFavorite = { name ->
+                weatherViewModel.addFavorite(name)
+            }
         )
     }
 }
 
 @Composable
 fun PortraitWeatherUI(
+    wIcon: Int,
     latitude: Float,
     longitude: Float,
     temperature: Float,
@@ -101,10 +125,13 @@ fun PortraitWeatherUI(
     time: String,
     isLoading: Boolean,
     error: String?,
+    favorites: List<FavoriteLocation>,
     onLatitudeChange: (String) -> Unit,
     onLongitudeChange: (String) -> Unit,
     onUpdateButtonClick: () -> Unit,
     onPickLocation: () -> Unit,
+    onFavoriteSelected: (FavoriteLocation) -> Unit,
+    onAddFavorite: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -112,6 +139,12 @@ fun PortraitWeatherUI(
             .padding(16.dp)
             .verticalScroll(rememberScrollState())
     ) {
+        FavoritesBar(
+            favorites = favorites,
+            onFavoriteSelected = onFavoriteSelected,
+            onAddFavorite = onAddFavorite
+        )
+        Spacer(modifier = Modifier.height(16.dp))
         CoordinatesCard(
             latitude = latitude,
             longitude = longitude,
@@ -139,6 +172,7 @@ fun PortraitWeatherUI(
             )
         } else {
             WeatherCard(
+                wIcon = wIcon,
                 temperature = temperature,
                 windSpeed = windSpeed,
                 windDirection = windDirection,
@@ -152,6 +186,7 @@ fun PortraitWeatherUI(
 
 @Composable
 fun LandscapeWeatherUI(
+    wIcon: Int,
     latitude: Float,
     longitude: Float,
     temperature: Float,
@@ -162,10 +197,13 @@ fun LandscapeWeatherUI(
     time: String,
     isLoading: Boolean,
     error: String?,
+    favorites: List<FavoriteLocation>,
     onLatitudeChange: (String) -> Unit,
     onLongitudeChange: (String) -> Unit,
     onUpdateButtonClick: () -> Unit,
     onPickLocation: () -> Unit,
+    onFavoriteSelected: (FavoriteLocation) -> Unit,
+    onAddFavorite: (String) -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -178,6 +216,12 @@ fun LandscapeWeatherUI(
                 .padding(end = 8.dp)
                 .verticalScroll(rememberScrollState())
         ) {
+            FavoritesBar(
+                favorites = favorites,
+                onFavoriteSelected = onFavoriteSelected,
+                onAddFavorite = onAddFavorite
+            )
+            Spacer(modifier = Modifier.height(16.dp))
             CoordinatesCard(
                 latitude = latitude,
                 longitude = longitude,
@@ -211,6 +255,7 @@ fun LandscapeWeatherUI(
                 )
             } else {
                 WeatherCard(
+                    wIcon = wIcon,
                     temperature = temperature,
                     windSpeed = windSpeed,
                     windDirection = windDirection,

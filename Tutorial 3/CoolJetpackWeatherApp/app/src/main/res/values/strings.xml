@@ -13,4 +13,9 @@
     <string name="favorite_locations">Favorite Locations</string>
     <string name="confirm_location">Confirm Location</string>
     <string name="weather_condition">Weather Condition</string>
+    <string name="add_favorite">Add to Favorites</string>
+    <string name="favorite_name_hint">Location Name</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="empty_favorites">No favorites added yet.</string>
 </resources>

@@ -1,17 +1,22 @@
 package com.example.cooljetpackweatherapp.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Card
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.cooljetpackweatherapp.R
 
 @Composable
 fun WeatherCard(
+    wIcon: Int,
     temperature: Float,
     windSpeed: Float,
     windDirection: Int,
@@ -21,8 +26,32 @@ fun WeatherCard(
 ) {
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(modifier = Modifier.padding(16.dp)) {
-            WeatherRow(label = stringResource(R.string.weather_condition), value = getWeatherDescription(weathercode))
-            WeatherRow(label = stringResource(R.string.temperature), value = "$temperature°C")
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column {
+                    Text(
+                        text = getWeatherDescription(weathercode),
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = "$temperature°C",
+                        style = MaterialTheme.typography.headlineLarge
+                    )
+                }
+                if (wIcon != 0) {
+                    Image(
+                        painter = painterResource(id = wIcon),
+                        contentDescription = "Weather Icon",
+                        modifier = Modifier.size(64.dp)
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+            HorizontalDivider()
+            Spacer(modifier = Modifier.height(8.dp))
             WeatherRow(label = stringResource(R.string.wind_speed), value = "$windSpeed km/h")
             WeatherRow(label = stringResource(R.string.wind_direction), value = "$windDirection°")
             WeatherRow(label = stringResource(R.string.sea_level_pressure), value = "$seaLevelPressure hPa")
