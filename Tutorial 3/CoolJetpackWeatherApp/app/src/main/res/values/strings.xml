@@ -12,4 +12,5 @@
     <string name="update_weather">Update Weather</string>
     <string name="favorite_locations">Favorite Locations</string>
     <string name="confirm_location">Confirm Location</string>
+    <string name="weather_condition">Weather Condition</string>
 </resources>

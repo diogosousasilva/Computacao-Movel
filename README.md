@@ -81,7 +81,10 @@ The repository is organised into three tutorial folders that follow the assignme
 - **Ktor Networking:** Uses `HttpClient` and `io.ktor` for asynchronous weather data fetching from Open-Meteo, replacing Retrofit.
 - **StateFlow & ViewModel:** Employs modern Kotlin Coroutines `StateFlow` to hoist UI state (`WeatherUIState`) efficiently from the ViewModel to Compose components.
 - **Responsive Layouts:** Employs conditional Compose rendering for seamless adaptations between Portrait and Landscape orientations.
-- **Google Maps Integration (Optional Feature):** A dedicated `LocationPickerActivity` relying on `com.google.maps.android:maps-compose` to allow users to visually select geographic coordinates on a world map.
+- **WMO Weather Code Display:** Translates standard WMO weather codes into user-friendly descriptions with emoji icons (e.g., ☀️ Clear sky, 🌧️ Rain, ⛈️ Thunderstorm).
+- **Loading & Error States:** Displays a `CircularProgressIndicator` while fetching data and a styled error message on failure.
+- **Full Localization (i18n):** All UI strings use `stringResource()` with complete translations in English (`values/strings.xml`) and Portuguese (`values-pt/strings.xml`).
+- **Google Maps Integration:** A dedicated `LocationPickerActivity` relying on `com.google.maps.android:maps-compose` allows users to visually select geographic coordinates on a world map. Selected coordinates are returned to the main screen via `ActivityResultContracts` and automatically trigger a weather data refresh.
 
 ## Technologies Used
 
@@ -282,7 +285,7 @@ kotlinc VectorLibrary.kt -include-runtime -d vector.jar && java -jar vector.jar
 2. Ensure you have `Load Gradle Changes`. 
 3. Run the `main()` function in `app/src/main/kotlin/com/example/app/Main.kt`. The output will display the execution of the generated wrappers and regex extractors.
 4. To run the Jetpack Compose app, open **Android Studio** and load `Tutorial 3/CoolJetpackWeatherApp/`.
-5. Sync Gradle and click **Run ▶** on an API 26+ device. Provide a valid Google Maps API Key in the Manifest to enable the Location Picker functionality.
+5. Sync Gradle and click **Run ▶** on an API 26+ device. A valid Google Maps API Key is already configured in the Manifest for the Location Picker. Tap the location icon to open the map, navigate to a location, and press **Confirm** — the selected coordinates will be sent back and the weather will refresh automatically.
 
 ## Implementation Explanation
 
@@ -312,9 +315,11 @@ kotlinc VectorLibrary.kt -include-runtime -d vector.jar && java -jar vector.jar
 ### Tutorial 3 Implementation
 
 - **Compile-Time Metaprogramming** — The `GreetingProcessorProject` utilizes `javax.annotation.processing.AbstractProcessor` integrated tightly with Gradle via `kapt`. It uses `KotlinPoet` to dynamically scaffold `TypeSpec` and `FunSpec` components, emitting clean, type-safe Kotlin source files during the compilation phase, drastically reducing boilerplate code in runtime.
-- **Jetpack Compose Paradigm** — The rewrite from XML transforms the UI layer entirely. Everything from the structural layout to the text fields acts as a pure reactive function dependent on `WeatherUIState`.
+- **Jetpack Compose Paradigm** — The rewrite from XML transforms the UI layer entirely. Everything from the structural layout to the text fields acts as a pure reactive function dependent on `WeatherUIState`. The UI renders three distinct states — loading (`CircularProgressIndicator`), error (styled error text), and success (weather data cards) — driven purely by the `WeatherUIState` data class.
 - **Ktor Networking** — Shifting away from Retrofit and standard `URL.readText()`, the application now takes advantage of `Ktor`'s robust HttpClient framework and integrates strictly with `kotlinx.serialization` for seamless JSON extraction, demonstrating a more idiomatic Kotlin networking stack.
 - **State Hoisting** — ViewModel responsibilities are sharpened using Kotlin's `StateFlow`. As synchronous updates occur (like input changes or network returns), Compose intelligently re-evaluates the component tree naturally without requiring manual view lookups or complex observation bindings.
+- **WMO Weather Codes** — The `WeatherCard` composable maps standard WMO weather codes to human-readable descriptions with emoji icons via a `when` expression, covering all major categories (clear, cloudy, fog, drizzle, rain, snow, thunderstorms).
+- **Location Picker Round-Trip** — The `LocationPickerActivity` uses `setResult()` to send the map's camera position (latitude/longitude) back to the main screen. `WeatherUI` registers a `rememberLauncherForActivityResult` that receives the coordinates, updates the ViewModel, and triggers an automatic weather fetch — completing a full round-trip flow.
 
 ## Conclusion
 

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_title"
+            android:textColor="#1A237E"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_subtitle"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Image Selection -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/select_image"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <!-- Image 1 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/image1_card"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image_1"
+                    android:scaleType="centerCrop" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Image 2 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/image2_card"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image_2"
+                    android:scaleType="centerCrop" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Image 3 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/image3_card"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image_3"
+                    android:scaleType="centerCrop" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <!-- Prompt Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/prompt_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_hint"
+                android:inputType="textMultiLine"
+                android:minLines="2"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Send Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/send_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/send_to_gemini"
+            android:textSize="16sp"
+            android:backgroundTint="#1A237E"
+            app:cornerRadius="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Response Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/response_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gemini_response"
+                    android:textColor="#1A237E"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/response_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#333333"
+                    android:textSize="14sp"
+                    android:lineSpacingMultiplier="1.3" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- History Section (Extra Feature) -->
+        <TextView
+            android:id="@+id/history_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/history"
+            android:textColor="#1A237E"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/history_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#555555"
+            android:textSize="13sp"
+            android:visibility="gone"
+            android:lineSpacingMultiplier="1.4"
+            android:layout_marginBottom="32dp" />
+
+    </LinearLayout>
+</ScrollView>

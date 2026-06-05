@@ -42,8 +42,12 @@ class LocationPickerActivity : ComponentActivity() {
 
                         Button(
                             onClick = {
-                                // Normally this would return the selected location to MainActivity
-                                // via ActivityResultContracts or a shared ViewModel
+                                val target = cameraPositionState.position.target
+                                val resultIntent = android.content.Intent().apply {
+                                    putExtra("latitude", target.latitude.toFloat())
+                                    putExtra("longitude", target.longitude.toFloat())
+                                }
+                                setResult(RESULT_OK, resultIntent)
                                 finish()
                             },
                             modifier = Modifier

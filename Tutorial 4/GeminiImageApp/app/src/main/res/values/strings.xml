@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Gemini Image App</string>
+    <string name="app_title">🍰 Gemini Image Analyzer</string>
+    <string name="app_subtitle">Select an image and ask Gemini about it</string>
+    <string name="select_image">Select an image:</string>
+    <string name="image_1">Cake Image 1</string>
+    <string name="image_2">Cookie Image 2</string>
+    <string name="image_3">Cake Image 3</string>
+    <string name="prompt_hint">Ask Gemini about the image... (e.g., "What is the recipe?")</string>
+    <string name="send_to_gemini">✨ Send to Gemini</string>
+    <string name="gemini_response">🤖 Gemini Response</string>
+    <string name="history">📋 Response History</string>
+</resources>

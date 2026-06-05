@@ -1,22 +1,48 @@
 package com.example.cooljetpackweatherapp.ui
 
+import android.app.Activity
+import android.content.Intent
 import android.content.res.Configuration
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.cooljetpackweatherapp.R
 import com.example.cooljetpackweatherapp.viewmodel.WeatherViewModel
 
 @Composable
 fun WeatherUI(weatherViewModel: WeatherViewModel = viewModel()) {
     val weatherUIState by weatherViewModel.uiState.collectAsState()
     val configuration = LocalConfiguration.current
+    val context = LocalContext.current
+
+    val locationPickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            result.data?.let { data ->
+                val lat = data.getFloatExtra("latitude", weatherUIState.latitude)
+                val lon = data.getFloatExtra("longitude", weatherUIState.longitude)
+                weatherViewModel.updateLatitude(lat)
+                weatherViewModel.updateLongitude(lon)
+                weatherViewModel.fetchWeather()
+            }
+        }
+    }
+
+    val onPickLocation: () -> Unit = {
+        locationPickerLauncher.launch(Intent(context, LocationPickerActivity::class.java))
+    }
 
     if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
         LandscapeWeatherUI(
@@ -25,15 +51,19 @@ fun WeatherUI(weatherViewModel: WeatherViewModel = viewModel()) {
             temperature = weatherUIState.temperature,
             windSpeed = weatherUIState.windspeed,
             windDirection = weatherUIState.winddirection,
+            weathercode = weatherUIState.weathercode,
             seaLevelPressure = weatherUIState.seaLevelPressure,
             time = weatherUIState.time,
+            isLoading = weatherUIState.isLoading,
+            error = weatherUIState.error,
             onLatitudeChange = { newValue ->
                 newValue.toFloatOrNull()?.let { weatherViewModel.updateLatitude(it) }
             },
             onLongitudeChange = { newValue ->
                 newValue.toFloatOrNull()?.let { weatherViewModel.updateLongitude(it) }
             },
-            onUpdateButtonClick = { weatherViewModel.fetchWeather() }
+            onUpdateButtonClick = { weatherViewModel.fetchWeather() },
+            onPickLocation = onPickLocation
         )
     } else {
         PortraitWeatherUI(
@@ -42,15 +72,19 @@ fun WeatherUI(weatherViewModel: WeatherViewModel = viewModel()) {
             temperature = weatherUIState.temperature,
             windSpeed = weatherUIState.windspeed,
             windDirection = weatherUIState.winddirection,
+            weathercode = weatherUIState.weathercode,
             seaLevelPressure = weatherUIState.seaLevelPressure,
             time = weatherUIState.time,
+            isLoading = weatherUIState.isLoading,
+            error = weatherUIState.error,
             onLatitudeChange = { newValue ->
                 newValue.toFloatOrNull()?.let { weatherViewModel.updateLatitude(it) }
             },
             onLongitudeChange = { newValue ->
                 newValue.toFloatOrNull()?.let { weatherViewModel.updateLongitude(it) }
             },
-            onUpdateButtonClick = { weatherViewModel.fetchWeather() }
+            onUpdateButtonClick = { weatherViewModel.fetchWeather() },
+            onPickLocation = onPickLocation
         )
     }
 }
@@ -62,11 +96,15 @@ fun PortraitWeatherUI(
     temperature: Float,
     windSpeed: Float,
     windDirection: Int,
+    weathercode: Int,
     seaLevelPressure: Float,
     time: String,
+    isLoading: Boolean,
+    error: String?,
     onLatitudeChange: (String) -> Unit,
     onLongitudeChange: (String) -> Unit,
     onUpdateButtonClick: () -> Unit,
+    onPickLocation: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -78,23 +116,37 @@ fun PortraitWeatherUI(
             latitude = latitude,
             longitude = longitude,
             onLatitudeChange = onLatitudeChange,
-            onLongitudeChange = onLongitudeChange
+            onLongitudeChange = onLongitudeChange,
+            onPickLocation = onPickLocation
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(
             onClick = onUpdateButtonClick,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Update Weather")
+            Text(stringResource(R.string.update_weather))
         }
         Spacer(modifier = Modifier.height(16.dp))
-        WeatherCard(
-            temperature = temperature,
-            windSpeed = windSpeed,
-            windDirection = windDirection,
-            seaLevelPressure = seaLevelPressure,
-            time = time
-        )
+        if (isLoading) {
+            Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+        } else if (error != null) {
+            Text(
+                text = error,
+                color = MaterialTheme.colorScheme.error,
+                style = MaterialTheme.typography.bodyMedium
+            )
+        } else {
+            WeatherCard(
+                temperature = temperature,
+                windSpeed = windSpeed,
+                windDirection = windDirection,
+                weathercode = weathercode,
+                seaLevelPressure = seaLevelPressure,
+                time = time
+            )
+        }
     }
 }
 
@@ -105,11 +157,15 @@ fun LandscapeWeatherUI(
     temperature: Float,
     windSpeed: Float,
     windDirection: Int,
+    weathercode: Int,
     seaLevelPressure: Float,
     time: String,
+    isLoading: Boolean,
+    error: String?,
     onLatitudeChange: (String) -> Unit,
     onLongitudeChange: (String) -> Unit,
     onUpdateButtonClick: () -> Unit,
+    onPickLocation: () -> Unit,
 ) {
     Row(
         modifier = Modifier
@@ -126,14 +182,15 @@ fun LandscapeWeatherUI(
                 latitude = latitude,
                 longitude = longitude,
                 onLatitudeChange = onLatitudeChange,
-                onLongitudeChange = onLongitudeChange
+                onLongitudeChange = onLongitudeChange,
+                onPickLocation = onPickLocation
             )
             Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = onUpdateButtonClick,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Update Weather")
+                Text(stringResource(R.string.update_weather))
             }
         }
         Column(
@@ -142,13 +199,26 @@ fun LandscapeWeatherUI(
                 .padding(start = 8.dp)
                 .verticalScroll(rememberScrollState())
         ) {
-            WeatherCard(
-                temperature = temperature,
-                windSpeed = windSpeed,
-                windDirection = windDirection,
-                seaLevelPressure = seaLevelPressure,
-                time = time
-            )
+            if (isLoading) {
+                Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                    CircularProgressIndicator()
+                }
+            } else if (error != null) {
+                Text(
+                    text = error,
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            } else {
+                WeatherCard(
+                    temperature = temperature,
+                    windSpeed = windSpeed,
+                    windDirection = windDirection,
+                    weathercode = weathercode,
+                    seaLevelPressure = seaLevelPressure,
+                    time = time
+                )
+            }
         }
     }
 }

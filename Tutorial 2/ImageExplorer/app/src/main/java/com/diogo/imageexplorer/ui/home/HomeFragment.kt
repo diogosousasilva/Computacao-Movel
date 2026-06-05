@@ -19,8 +19,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit viewModel: HomeViewModel
-    private lateinit adapter: DogAdapter
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var adapter: DogAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -1,6 +1,5 @@
 package com.example.cooljetpackweatherapp.ui
 
-import android.content.Intent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
@@ -8,7 +7,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.cooljetpackweatherapp.R
@@ -18,10 +16,9 @@ fun CoordinatesCard(
     latitude: Float,
     longitude: Float,
     onLatitudeChange: (String) -> Unit,
-    onLongitudeChange: (String) -> Unit
+    onLongitudeChange: (String) -> Unit,
+    onPickLocation: () -> Unit
 ) {
-    val context = LocalContext.current
-
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(modifier = Modifier.padding(16.dp)) {
             Row(
@@ -30,9 +27,7 @@ fun CoordinatesCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(text = stringResource(R.string.coordinates), style = MaterialTheme.typography.titleMedium)
-                IconButton(onClick = {
-                    context.startActivity(Intent(context, LocationPickerActivity::class.java))
-                }) {
+                IconButton(onClick = onPickLocation) {
                     Icon(imageVector = Icons.Default.LocationOn, contentDescription = "Pick Location")
                 }
             }

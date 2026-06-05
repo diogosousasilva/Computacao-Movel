@@ -12,4 +12,5 @@
     <string name="update_weather">Atualizar Meteorologia</string>
     <string name="favorite_locations">Locais Favoritos</string>
     <string name="confirm_location">Confirmar Local</string>
+    <string name="weather_condition">Condição Meteorológica</string>
 </resources>
