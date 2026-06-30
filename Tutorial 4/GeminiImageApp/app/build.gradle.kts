@@ -27,7 +27,7 @@ android {
 
         // Inject Gemini API Key into BuildConfig from local.properties
         buildConfigField("String", "GEMINI_API_KEY",
-            "\"${localProperties.getProperty("GEMINI_API_KEY", "")}\"")
+            "\"${localProperties.getProperty("apiKey") ?: localProperties.getProperty("GEMINI_API_KEY", "")}\"")
     }
 
     buildTypes {

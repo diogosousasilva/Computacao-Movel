@@ -126,6 +126,25 @@ interface AIAssistant {
      * @param input The text to analyze for sentiment
      * @return JSON string with rating and justification
      */
+    /**
+     * Cleans markdown JSON wrapping (e.g. ```json ... ```) from the text response.
+     */
+    fun cleanJson(text: String): String {
+        var cleaned = text.trim()
+        if (cleaned.startsWith("```json")) {
+            cleaned = cleaned.removePrefix("```json")
+            if (cleaned.endsWith("```")) {
+                cleaned = cleaned.removeSuffix("```")
+            }
+        } else if (cleaned.startsWith("```")) {
+            cleaned = cleaned.removePrefix("```")
+            if (cleaned.endsWith("```")) {
+                cleaned = cleaned.removeSuffix("```")
+            }
+        }
+        return cleaned.trim()
+    }
+
     suspend fun processSentiment(input: String): String {
         val sentimentPrompt = """
             You are a sentiment analysis expert.
@@ -139,12 +158,16 @@ interface AIAssistant {
             7. Very Positive
 
             You MUST respond ONLY with a valid JSON object in the following format, with no additional text:
-            {"rating": <number from 1 to 7>, "justification": "<your justification>"}
+            {
+              "rating": <number from 1 to 7>,
+              "justification": "<your justification>"
+            }
 
             Text to analyze: "$input"
         """.trimIndent()
 
-        return apiCallWithBackoff(sentimentPrompt)
+        val response = apiCallWithBackoff(sentimentPrompt)
+        return cleanJson(response)
     }
 
     /**

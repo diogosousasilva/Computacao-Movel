@@ -95,4 +95,12 @@ class GeminiViewModel : ViewModel() {
             }
         }
     }
+
+    /**
+     * Clears all items in the history.
+     */
+    fun clearHistory() {
+        historyList.clear()
+        _history.value = emptyList()
+    }
 }

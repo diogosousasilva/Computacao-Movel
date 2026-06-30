@@ -40,3 +40,14 @@ tasks.test {
 kotlin {
     jvmToolchain(23)
 }
+
+tasks.register<JavaExec>("runTempTests") {
+    mainClass.set("dam.TemperatureTestsKt")
+    classpath = sourceSets["main"].runtimeClasspath
+}
+
+tasks.register<JavaExec>("runMain") {
+    mainClass.set("dam.MainKt")
+    classpath = sourceSets["main"].runtimeClasspath
+    standardInput = System.`in`
+}

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "82605788486",
+    "project_id": "computacao-movel-projetos",
+    "storage_bucket": "computacao-movel-projetos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82605788486:android:4121fe4d65ee9af24c2947",
+        "android_client_info": {
+          "package_name": "com.diogo.replog"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACLlhjidJjcgEhovzFNJ7kO13p9qp6ZO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82605788486:android:0e25df03be76ec8c4c2947",
+        "android_client_info": {
+          "package_name": "com.notes.notesproxmlviews"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACLlhjidJjcgEhovzFNJ7kO13p9qp6ZO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">Gemini Image App</string>
-    <string name="app_title">🍰 Gemini Image Analyzer</string>
-    <string name="app_subtitle">Select an image and ask Gemini about it</string>
-    <string name="select_image">Select an image:</string>
-    <string name="image_1">Cake Image 1</string>
-    <string name="image_2">Cookie Image 2</string>
-    <string name="image_3">Cake Image 3</string>
-    <string name="prompt_hint">Ask Gemini about the image... (e.g., "What is the recipe?")</string>
-    <string name="send_to_gemini">✨ Send to Gemini</string>
-    <string name="gemini_response">🤖 Gemini Response</string>
-    <string name="history">📋 Response History</string>
+    <string name="app_title">🍰 Analisador de Imagens Gemini</string>
+    <string name="app_subtitle">Seleciona uma imagem e pergunta ao Gemini sobre ela</string>
+    <string name="select_image">Seleciona uma imagem:</string>
+    <string name="image_1">Bolo Imagem 1</string>
+    <string name="image_2">Bolacha Imagem 2</string>
+    <string name="image_3">Bolo Imagem 3</string>
+    <string name="prompt_hint">Pergunta ao Gemini sobre a imagem... (ex: \"Qual é a receita?\")</string>
+    <string name="send_to_gemini">✨ Enviar para o Gemini</string>
+    <string name="gemini_response">🤖 Resposta do Gemini</string>
+    <string name="history">📋 Histórico de Respostas</string>
+    <string name="clear_history">🗑️ Limpar Histórico</string>
 </resources>

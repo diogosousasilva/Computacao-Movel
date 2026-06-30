@@ -6,6 +6,7 @@ public class Note {
     String title;
     String content;
     Timestamp timestamp;
+    String imageUrl;
 
     public Note() {
     }
@@ -32,5 +33,13 @@ public class Note {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

@@ -54,6 +54,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     public override fun onStart() {
+        setTheme(R.style.AppThemeNoActionBar)
         super.onStart()
 
         // If there is no signed in user, launch FirebaseUI
@@ -73,7 +74,7 @@ class SignInActivity : AppCompatActivity() {
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
                 .setLogo(R.mipmap.ic_launcher)
-                .setTheme(R.style.AppTheme) // Use the custom theme
+                .setTheme(R.style.AppThemeNoActionBar) // Use the NoActionBar theme
                 .build()
 
             signInLauncher.launch(signInIntent)

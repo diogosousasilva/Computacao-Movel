@@ -47,6 +47,8 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.firestore)
+    implementation(libs.firebase.storage)
+    implementation(libs.glide)
     // FirebaseUI Firestore — provides FirestoreRecyclerAdapter for real-time RecyclerView
     implementation("com.firebaseui:firebase-ui-firestore:8.0.2")
     testImplementation(libs.junit)

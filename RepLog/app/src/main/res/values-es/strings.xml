@@ -1,0 +1,98 @@
+<resources>
+    <string name="app_name">RepLog</string>
+
+    <!-- Auth -->
+    <string name="login">Iniciar Sesión</string>
+    <string name="login_subtitle">Bienvenido de nuevo a tu diario de entrenamiento</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar Contraseña</string>
+    <string name="display_name">Nombre</string>
+    <string name="create_account">Crear Cuenta</string>
+    <string name="register_subtitle">Empieza a seguir tu progreso hoy</string>
+    <string name="no_account">¿No tienes cuenta?</string>
+    <string name="sign_out">Cerrar Sesión</string>
+
+    <!-- Home -->
+    <string name="welcome_back">Bienvenido de nuevo,</string>
+    <string name="today">Hoy</string>
+    <string name="streak">Racha</string>
+    <string name="total_workouts">Total</string>
+    <string name="start_workout">Iniciar Entrenamiento</string>
+    <string name="recent_workouts">Entrenamientos Recientes</string>
+    <string name="no_workouts_yet">Aún sin entrenamientos</string>
+    <string name="tap_to_start">¡Toca el botón de abajo para comenzar tu primer entrenamiento!</string>
+    <string name="volume">volumen</string>
+
+    <!-- Workout Logger -->
+    <string name="log_workout">Registrar Entrenamiento</string>
+    <string name="add_exercise">Añadir Ejercicio</string>
+    <string name="add_set">Añadir Serie</string>
+    <string name="finish">Finalizar</string>
+    <string name="add_exercises_prompt">Añade ejercicios para comenzar tu entrenamiento</string>
+    <string name="select_exercise">Seleccionar Ejercicio</string>
+    <string name="search_exercises">Buscar ejercicios…</string>
+
+    <!-- Progress -->
+    <string name="your_progress">Tu Progreso</string>
+    <string name="no_progress_yet">Aún sin datos de progreso</string>
+    <string name="complete_workouts_for_progress">Completa entrenamientos para ver tus gráficos de progreso</string>
+
+    <!-- Social -->
+    <string name="friends_and_leaderboard">Amigos</string>
+    <string name="add_friend">Añadir Amigo</string>
+    <string name="search_by_email">Buscar por correo…</string>
+    <string name="search">Buscar</string>
+    <string name="add">Añadir</string>
+    <string name="request_sent">¡Solicitud de amistad enviada!</string>
+    <string name="leaderboard">Clasificación</string>
+    <string name="friends_list">Amigos</string>
+    <string name="no_leaderboard_data">Añade amigos para ver la clasificación</string>
+    <string name="no_friends_yet">Aún sin amigos. ¡Añade amigos por su correo!</string>
+
+    <!-- AI Coach -->
+    <string name="ai_coach">Entrenador IA</string>
+    <string name="ai_coach_desc">Obtén planes de progresión personalizados con IA</string>
+    <string name="ask_coach">Pregunta a tu entrenador…</string>
+    <string name="coach_welcome">Tu Entrenador IA</string>
+    <string name="coach_welcome_desc">Recibe consejos de entrenamiento personalizados según tu historial</string>
+    <string name="analyze_training">Analizar Mi Entrenamiento</string>
+    <string name="coach_thinking">El entrenador está pensando…</string>
+
+    <!-- Profile -->
+    <string name="profile">Perfil</string>
+    <string name="workouts">Entrenamientos</string>
+    <string name="settings">Ajustes</string>
+    <string name="about">Acerca de</string>
+    <string name="help">Ayuda</string>
+
+    <!-- Settings -->
+    <string name="language">Idioma</string>
+    <string name="language_info">El idioma de la app sigue los ajustes del dispositivo</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="milestone_alerts">Alertas de Hitos</string>
+    <string name="friend_activity">Actividad de Amigos</string>
+    <string name="subscription">Suscripción</string>
+    <string name="upgrade_to_pro">Actualizar a PRO</string>
+    <string name="app_info">Información de la App</string>
+
+    <!-- About -->
+    <string name="developed_by">Desarrollado por</string>
+    <string name="author_course">Ingeniería Informática\nENIDH</string>
+    <string name="course_name">Ingeniería Informática</string>
+    <string name="about_description">RepLog es un rastreador inteligente de entrenamiento que te ayuda a registrar entrenamientos, seguir la progresión, detectar estancamientos y competir con amigos basándose en la mejora relativa.</string>
+
+    <!-- Help / FAQ -->
+    <string name="faq">Preguntas Frecuentes</string>
+    <string name="contact_support">Contactar Soporte</string>
+    <string name="faq_q1">¿Cómo registro un entrenamiento?</string>
+    <string name="faq_a1">Toca el botón "Iniciar Entrenamiento" en la pantalla principal. Añade ejercicios de la biblioteca, introduce tus series con repeticiones y peso, luego toca "Finalizar" para guardar.</string>
+    <string name="faq_q2">¿Qué es la Clasificación Delta?</string>
+    <string name="faq_a2">La Clasificación Delta te clasifica a ti y a tus amigos por porcentaje de mejora en el volumen total de entrenamiento en las últimas 4 semanas. Esto hace que la competición sea justa sin importar el nivel.</string>
+    <string name="faq_q3">¿Qué significa el indicador de estancamiento?</string>
+    <string name="faq_a3">Una insignia de estancamiento (⚠️) aparece cuando tu peso máximo en un ejercicio no ha cambiado durante 2 o más semanas. La app sugerirá estrategias para superarlo.</string>
+    <string name="faq_q4">¿Qué es RepLog PRO?</string>
+    <string name="faq_a4">PRO (1€/mes) desbloquea el Entrenador IA para planes personalizados, análisis completos, historial completo de amigos, desafíos directos y clasificaciones globales.</string>
+    <string name="faq_q5">¿Cómo funciona el Entrenador IA?</string>
+    <string name="faq_a5">El Entrenador IA analiza tus últimas 4 semanas de datos usando un modelo de lenguaje. Identifica patrones, estancamiento e indicadores de recuperación, proporcionando un plan semanal con metas específicas.</string>
+</resources>

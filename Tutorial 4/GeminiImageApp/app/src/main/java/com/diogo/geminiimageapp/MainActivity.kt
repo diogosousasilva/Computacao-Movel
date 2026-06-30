@@ -54,6 +54,11 @@ class MainActivity : AppCompatActivity() {
             sendPrompt(prompt)
         }
 
+        // Set up clear history button
+        binding.clearHistoryButton.setOnClickListener {
+            viewModel.clearHistory()
+        }
+
         // Observe ViewModel state
         observeViewModel()
     }
@@ -145,9 +150,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.history.observe(this) { historyList ->
             if (historyList.isNullOrEmpty()) {
                 binding.historyTextView.visibility = View.GONE
-                binding.historyTitle.visibility = View.GONE
+                binding.historyHeader.visibility = View.GONE
             } else {
-                binding.historyTitle.visibility = View.VISIBLE
+                binding.historyHeader.visibility = View.VISIBLE
                 binding.historyTextView.visibility = View.VISIBLE
                 val historyText = historyList.joinToString("\n\n") { entry ->
                     "🕐 ${entry.timestamp}\n📝 Prompt: ${entry.prompt}\n🤖 Response: ${entry.response}"

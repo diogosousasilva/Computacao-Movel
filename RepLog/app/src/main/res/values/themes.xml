@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base RepLog theme -->
+    <style name="Theme.RepLog" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/navy_dark</item>
+        <item name="android:navigationBarColor">@color/navy_dark</item>
+    </style>
+
+    <!-- Splash screen theme -->
+    <style name="Theme.RepLog.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="postSplashScreenTheme">@style/Theme.RepLog</item>
+    </style>
+</resources>
