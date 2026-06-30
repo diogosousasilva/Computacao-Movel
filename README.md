@@ -22,6 +22,12 @@ The repository is organised into three tutorial folders that follow the assignme
 7. **Annotation Processors** — creating compile-time code generators using `kapt` and `KotlinPoet` to build wrapper classes and implement regex-based data extractors. Refactored to target JVM 17 and utilize annotations from a unified root package.
 8. **CoolJetpackWeatherApp** — a modern rewrite of the weather application utilizing **Jetpack Compose** for a declarative UI, **Ktor** for networking, Kotlin Serialization, a Google Maps integration for location picking, a **Favorite Locations** system, and dynamically rendered weather iconography mapping WMO codes to native XML drawables.
 
+**Tutorial 4** focus on advanced asynchronous development (Kotlin Flows & Channels), Gemini AI SDK integrations, cloud backend deployment (Firebase Auth, Firestore, Storage), and security refactoring:
+9. **intro-coroutines V2 (Flows & Channels)** — advanced flow control, channels backpressure using a secondary flow control channel (`progressChannel`), and Swing-based StateFlow backing properties with reactive state machine rendering.
+10. **AISimpleCalls & GeminiImageApp** — dynamic hyperparameter loading, markdown JSON cleaning helpers, PT-PT localization, and layout modifications to implement clean history cache resetting.
+11. **build-android-start & NotesProXMLViews3** — layout fixes (ActionBar overlap in login flows) and rich cloud file features (image selection via Photo Picker, uploading notes images to Firebase Storage, and Glide thumbnail bindings).
+12. **RepLog** — security audit and removal of exposed API keys, implementing clean `local.properties` extraction to guarantee secure execution.
+
 ## Features
 
 ### Kotlin Basics (`Tutorial 1/1/`, `Tutorial 1/2/`, `Tutorial 1/3/`)
@@ -88,6 +94,21 @@ The repository is organised into three tutorial folders that follow the assignme
 - **Google Maps Integration:** A dedicated `LocationPickerActivity` relying on `com.google.maps.android:maps-compose` allows users to visually select geographic coordinates on a world map. Selected coordinates are returned to the main screen via `ActivityResultContracts` and automatically trigger a weather data refresh.
 - **Favorite Locations Bar:** A new `FavoritesBar` component containing a horizontal list of saved coordinates. Users can bookmark their current coordinates via a name prompt dialog and quick-select favorites to automatically update the forecast.
 
+### Advanced Flows, AI & Firebase (`Tutorial 4/`)
+- **Flows and Channels (`intro-coroutines V2/`):**
+  - Swing-based contributors dashboard (`kotlin-coroutines-hands-on`) loading contributors concurrently.
+  - Implemented `LoadingStateData` flow tracking execution phases (`INIT`, `IN_PROGRESS`, `COMPLETED`, `CANCELED`).
+  - Decoupled network aggregation and UI rendering via backpressure using a closed-safe `progressChannel: Channel<Pair<List<User>, Boolean>>`.
+- **AI Console and Image Apps (`AISimpleCalls/` & `GeminiImageApp/`):**
+  - Dynamic loading of LLM hyperparameters (`TEMPERATURE` / `MAX_TOKENS`) with fallbacks.
+  - Strict 7-point scale sentiment analysis using `cleanJson` to sanitize markdown JSON code blocks.
+  - PT-PT localization translations and "Limpar Histórico" buttons linked to ViewModel states.
+- **Firebase Integration Apps (`build-android-start/` & `NotesProXMLViews3/`):**
+  - Fixed Friendly Chat login screen ActionBar overlapping the inputs.
+  - Created fully-featured image pickers, storing assets under Firestore nodes (`notes_images/{uid}/...jpg`) and Glide recycler card thumbnails on the right.
+- **RepLog Security Audit:**
+  - Extracted exposed credentials to git-ignored `local.properties`, protecting build configurations.
+
 ## Technologies Used
 
 | Technology | Purpose |
@@ -112,6 +133,9 @@ The repository is organised into three tutorial folders that follow the assignme
 | **KotlinPoet & Kapt** | Annotation processing and code generation (Tutorial 3) |
 | **Google Maps Compose** | Interactive map integration (Tutorial 3) |
 | **Material Icons Extended** | Expanded vector icon set for UI elements (Tutorial 3) |
+| **Firebase Storage** | Notes media attachment hosting (Tutorial 4) |
+| **Glide 4** | Note list thumbnails and details preview rendering (Tutorial 4) |
+| **Kotlin Channels & StateFlow** | Flows, flow control, backpressure, and reactive state machine (Tutorial 4) |
 
 ## Project Structure
 
@@ -233,6 +257,60 @@ Computacao-Movel/
 │       │   └── AndroidManifest.xml
 │       └── build.gradle.kts
 │
+├── Tutorial 4/
+│   ├── AISimpleCalls/                     # AI CLI console application
+│   │   ├── config.properties              # TEMPERATURE and MAX_TOKENS declarations
+│   │   ├── src/main/kotlin/dam/
+│   │   │   ├── AIAssistant.kt             # cleanJson helper & processSentiment formatting
+│   │   │   ├── Main.kt                    # Menu option 2 sentiment triggering
+│   │   │   └── TemperatureTests.kt        # Hyperparameter evaluation script
+│   │   └── build.gradle.kts               # runMain & runTempTests task configurations
+│   │
+│   ├── GeminiImageApp/                    # AI visual helper application
+│   │   ├── app/
+│   │   │   ├── src/main/
+│   │   │   │   ├── java/com/diogo/geminiimageapp/
+│   │   │   │   │   ├── MainActivity.kt        # Reset button listener & layout binding
+│   │   │   │   │   └── GeminiViewModel.kt     # clearHistory implementation
+│   │   │   │   └── res/
+│   │   │   │       ├── layout/activity_main.xml  # Reset history layout button wrapper
+│   │   │   │       └── values/strings.xml     # PT-PT translated localization resources
+│   │   │   └── build.gradle.kts           # local.properties apiKey parsing
+│   │   └── local.properties               # GEMINI_API_KEY / apiKey declarations
+│   │
+│   ├── build-android-start/               # Friendly Chat App (Firebase)
+│   │   └── app/src/main/java/com/.../
+│   │       └── SignInActivity.kt          # R.style.AppThemeNoActionBar fix
+│   │
+│   ├── intro-coroutines V2/               # Kotlin flows and channels exercise set
+│   │   └── kotlin-coroutines-hands-on/    # Swing application subproject
+│   │       ├── src/main/kotlin/contributors/
+│   │       │   ├── User.kt                # Data models
+│   │       │   ├── GitHubService.kt       # Retrofit suspend interface
+│   │       │   ├── Contributors.kt        # LoadingStateData + progressChannel flow
+│   │       │   ├── ContributorsUI.kt      # Backing property + state collection
+│   │       │   └── main.kt                # Thread launcher
+│   │       └── build.gradle.kts           # Kotlin JVM configuration
+│   │
+│   └── NotesProXMLViews3/                 # Notes Android App (Firebase & Glide)
+│       ├── app/
+│       │   ├── src/main/
+│       │   │   ├── java/com/notes/notesproxmlviews/
+│       │   │   │   ├── Note.java          # imageUrl model field
+│       │   │   │   ├── NoteDetailsActivity.kt # PhotoPicker + Firebase Storage upload
+│       │   │   │   └── NoteAdapter.kt     # Glide recycler binding & Intent passing
+│       │   │   └── res/
+│       │   │       ├── drawable/          # ic_baseline_image & close icons
+│       │   │       └── layout/
+│       │   │           ├── activity_note_details.xml # Image select & preview layouts
+│       │   │           └── recycler_note_item.xml   # Horizontal thumbnail list layouts
+│       │   └── build.gradle.kts           # Firebase Storage + Glide imports
+│       └── gradle/libs.versions.toml      # Dependency definitions
+│
+├── RepLog/                                # RepLog App (Compose - Security audited)
+│   ├── app/build.gradle.kts               # Dynamic local.properties API Key loading
+│   └── local.properties                   # Ignored config credentials
+│
 └── README.md
 ```
 
@@ -297,6 +375,20 @@ kotlinc VectorLibrary.kt -include-runtime -d vector.jar && java -jar vector.jar
 4. To run the Jetpack Compose app, open **Android Studio** and load `Tutorial 3/CoolJetpackWeatherApp/`.
 5. Sync Gradle and click **Run ▶** on an API 26+ device. A valid Google Maps API Key is already configured in the Manifest for the Location Picker. Tap the location icon to open the map, navigate to a location, and press **Confirm** — the selected coordinates will be sent back and the weather will refresh automatically.
 
+### Tutorial 4 (`AISimpleCalls`, `intro-coroutines V2`, `GeminiImageApp`, `NotesProXMLViews3`)
+
+1. To run the `AISimpleCalls` main menu or temperature tests, navigate to the folder and run:
+   ```bash
+   ./gradlew runMain
+   ./gradlew runTempTests
+   ```
+2. To build the Swing desktop application in `intro-coroutines V2`:
+   - Navigate to `Tutorial 4/intro-coroutines V2/kotlin-coroutines-hands-on` and compile with:
+     ```bash
+     ../../AISimpleCalls/gradlew compileKotlin
+     ```
+3. Open Android Studio and load `GeminiImageApp`, `build-android-start`, `NotesProXMLViews3`, or `RepLog`. Ensure local SDK dependencies sync successfully, configure local configurations in `local.properties`, and run directly on a simulator or device.
+
 ## Implementation Explanation
 
 ### Kotlin Exercises (`Tutorial 2/Kotilin/`)
@@ -332,6 +424,14 @@ kotlinc VectorLibrary.kt -include-runtime -d vector.jar && java -jar vector.jar
 - **Location Picker Round-Trip** — The `LocationPickerActivity` uses `setResult()` to send the map's camera position (latitude/longitude) back to the main screen. `WeatherUI` registers a `rememberLauncherForActivityResult` that receives the coordinates, updates the ViewModel, and triggers an automatic weather fetch — completing a full round-trip flow.
 - **Persistent Location Bookmarking** — Introduced a localized `FavoritesBar` composable supporting persistent list rendering inside both Portrait and Landscape Compose arrangements. Users can add a location by clicking the "+" button, entering a name in a material dialog, and immediately selecting any bookmarked location card to instantly fetch its forecast.
 
+### Tutorial 4 Asynchronous Flows & Cloud Services
+
+- **Advanced Channels Flow Control**: Inside `kotlin-coroutines-hands-on`, a secondary `progressChannel` acts as an intermediary buffer (backpressure control) that receives updates from concurrent network operations and schedules UI updates on `Dispatchers.Main`.
+- **Backing Properties Pattern**: Mutable StateFlow is held private (`_loadingState`), while the immutable read-only view is exposed publicly (`loadingState = _loadingState.asStateFlow()`) to prevent direct modifications of state from outside the controller.
+- **JSON Formatting & Sanitization**: To prevent errors when parsing raw string completions from LLMs, `cleanJson` checks if the output is enclosed in markdown code fences (` ```json ` ... ` ``` `) and removes them.
+- **Firebase Storage Upload Flow**: When saving a note with an image attachment, `NoteDetailsActivity` uploads the local file to Firebase Storage under `notes_images/{uid}/{timestamp}.jpg`. Upon success, it fetches the public download URL, stores it in the Firestore document's `imageUrl` property, and finishes the activity, triggering an automatic RecyclerView reload.
+- **RepLog Security Audit**: Removed cleartext API secrets from version control by parsing `local.properties` via `rootProject.file(...)` and using standard `Properties` load methods to safely load build configs.
+
 ## Conclusion
 
-This project covers Tutorial 1, Tutorial 2, and Tutorial 3: fundamental Kotlin programming, object-oriented design, advanced language features (sealed classes, generics, operator overloading, compile-time annotation processing with kapt), and Android application development. The CoolWeatherApps demonstrate clean MVVM architecture, real-time REST API consumption using Retrofit and Ktor, GPS integration, Google Maps integration, responsive layouts across both XML and Jetpack Compose toolkits — all written following modern Android development practices.
+This project covers Tutorials 1, 2, 3, and 4: fundamental Kotlin programming, object-oriented design, advanced language features (sealed classes, generics, operator overloading, compile-time annotation processing with kapt), advanced asynchronous flow control (flows & channels), cloud database/storage integration, and generative AI features. The applications demonstrate clean MVVM architecture, real-time REST API consumption using Retrofit and Ktor, GPS integration, Google Maps integration, responsive layouts across both XML and Jetpack Compose toolkits — all written following modern Android development practices.
